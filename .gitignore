@@ -1,3 +1,5 @@
 *.csv
 .DS_Store
 *.tar.gz
+*.xml
+*.listing
