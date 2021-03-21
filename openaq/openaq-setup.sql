@@ -19,7 +19,7 @@ CREATE TABLE openaq.measurements(
   period varchar(max),
   measure varchar(max)
 )
-DISRIBUTE RANDOM;
+DISTRIBUTE RANDOM;
 GRANT ALL ON TABLE openaq.measurements TO public;
 
 CREATE EXTERNAL STORAGE openaq.openaq_storage
