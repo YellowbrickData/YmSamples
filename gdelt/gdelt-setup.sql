@@ -2,6 +2,8 @@ DROP SCHEMA IF EXISTS gdelt CASCADE;
 CREATE SCHEMA gdelt;
 GRANT ALL ON SCHEMA gdelt TO PUBLIC;
 
+-- Create tables and load lookups
+
 CREATE TABLE gdelt.events (
   globaleventid INT,
   day INT,
@@ -64,6 +66,27 @@ CREATE TABLE gdelt.events (
 DISTRIBUTE RANDOM;
 GRANT ALL ON TABLE gdelt.events TO public;
 
+CREATE TABLE gdelt.eventcodes (code VARCHAR(max), description VARCHAR(max)) DISTRIBUTE REPLICATE;
+GRANT ALL ON TABLE gdelt.eventcodes TO public;
+\COPY gdelt.eventcodes FROM './eventcodes.txt' WITH CSV HEADER DELIMITER E'\t';
+YFLUSH gdelt.eventcodes;
+
+CREATE TABLE gdelt.types (type VARCHAR(max), description VARCHAR(max)) DISTRIBUTE REPLICATE;
+GRANT ALL ON TABLE gdelt.types TO public;
+\COPY gdelt.types FROM './types.txt' WITH CSV HEADER DELIMITER E'\t';
+YFLUSH gdelt.types;
+
+CREATE TABLE gdelt.groups (_group VARCHAR(max), description VARCHAR(max)) DISTRIBUTE REPLICATE;
+GRANT ALL ON TABLE gdelt.groups TO public;
+\COPY gdelt.groups FROM './groups.txt' WITH CSV HEADER DELIMITER E'\t';
+YFLUSH gdelt.groups;
+
+CREATE TABLE gdelt.countries (code VARCHAR(max), country VARCHAR(max)) DISTRIBUTE REPLICATE;
+GRANT ALL ON TABLE gdelt.countries TO public;
+\COPY gdelt.countries FROM './countries.txt' WITH CSV HEADER DELIMITER E'\t';
+YFLUSH gdelt.countries;
+
+-- Setup EXTERNAL objects
 CREATE EXTERNAL STORAGE gdelt.gdelt_storage
   TYPE s3
   ENDPOINT 'https://s3.us-east-1.amazonaws.com/'
