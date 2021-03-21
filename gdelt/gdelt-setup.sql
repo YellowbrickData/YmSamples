@@ -66,6 +66,27 @@ CREATE TABLE gdelt.events (
 DISTRIBUTE RANDOM;
 GRANT ALL ON TABLE gdelt.events TO public;
 
+CREATE TABLE gdelt.mentions (
+  globaleventid INT,
+  eventtimedate BIGINT,
+  mentiontimedate BIGINT,
+  mentiontype INT,
+  mentionsourcename VARCHAR(max),
+  mentionidentifier VARCHAR(max),
+  sentenceid INT,
+  actor1charoffset INT,
+  actor2charoffset INT,
+  actioncharoffset INT,
+  inrawtext INT,
+  confidence INT,
+  mentiondoclen INT,
+  mentiondoctone FLOAT,
+  mentiondoctranslationinfo VARCHAR(max),
+  extras VARCHAR(max)
+)
+DISTRIBUTE RANDOM;
+GRANT ALL ON TABLE gdelt.mentions TO public;
+
 CREATE TABLE gdelt.eventcodes (code VARCHAR(max), description VARCHAR(max)) DISTRIBUTE REPLICATE;
 GRANT ALL ON TABLE gdelt.eventcodes TO public;
 \COPY gdelt.eventcodes FROM './eventcodes.txt' WITH CSV HEADER DELIMITER E'\t';
