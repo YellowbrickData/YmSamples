@@ -1,3 +1,3 @@
 LOAD TABLE gdelt.events
-  FROM ('/events/1979.csv')
+  FROM ('/v2/events/2019')
   EXTERNAL LOCATION gdelt.gdelt_location;
