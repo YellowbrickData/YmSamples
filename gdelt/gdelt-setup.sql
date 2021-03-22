@@ -89,22 +89,22 @@ GRANT ALL ON TABLE gdelt.mentions TO public;
 
 CREATE TABLE gdelt.eventcodes (code VARCHAR(max), description VARCHAR(max)) DISTRIBUTE REPLICATE;
 GRANT ALL ON TABLE gdelt.eventcodes TO public;
-\COPY gdelt.eventcodes FROM './eventcodes.txt' WITH CSV HEADER DELIMITER E'\t';
+\COPY gdelt.eventcodes FROM './lookup-tables/eventcodes.txt' WITH CSV HEADER DELIMITER E'\t';
 YFLUSH gdelt.eventcodes;
 
 CREATE TABLE gdelt.types (type VARCHAR(max), description VARCHAR(max)) DISTRIBUTE REPLICATE;
 GRANT ALL ON TABLE gdelt.types TO public;
-\COPY gdelt.types FROM './types.txt' WITH CSV HEADER DELIMITER E'\t';
+\COPY gdelt.types FROM './lookup-tables/types.txt' WITH CSV HEADER DELIMITER E'\t';
 YFLUSH gdelt.types;
 
 CREATE TABLE gdelt.groups (_group VARCHAR(max), description VARCHAR(max)) DISTRIBUTE REPLICATE;
 GRANT ALL ON TABLE gdelt.groups TO public;
-\COPY gdelt.groups FROM './groups.txt' WITH CSV HEADER DELIMITER E'\t';
+\COPY gdelt.groups FROM './lookup-tables/groups.txt' WITH CSV HEADER DELIMITER E'\t';
 YFLUSH gdelt.groups;
 
 CREATE TABLE gdelt.countries (code VARCHAR(max), country VARCHAR(max)) DISTRIBUTE REPLICATE;
 GRANT ALL ON TABLE gdelt.countries TO public;
-\COPY gdelt.countries FROM './countries.txt' WITH CSV HEADER DELIMITER E'\t';
+\COPY gdelt.countries FROM './lookup-tables/countries.txt' WITH CSV HEADER DELIMITER E'\t';
 YFLUSH gdelt.countries;
 
 -- Setup EXTERNAL objects
