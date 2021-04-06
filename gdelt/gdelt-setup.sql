@@ -69,6 +69,37 @@ CREATE TABLE gdelt.events (
 DISTRIBUTE RANDOM;
 GRANT ALL ON TABLE gdelt.events TO public;
 
+CREATE TABLE gdelt.gkg (
+  gkgrecordid varchar(max),
+  date bigint,
+  sourcecollectionidentifier int,
+  sourcecommonname varchar(max),
+  documentidentifier varchar(max),
+  counts varchar(max),
+  v2counts varchar(max),
+  themes varchar(max),
+  v2themes varchar(max),
+  locations varchar(max),
+  v2locations varchar(max),
+  persons varchar(max),
+  v2persons varchar(max),
+  organizations varchar(max),
+  v2organizations varchar(max),
+  v2tone varchar(max),
+  dates varchar(max),
+  gcam varchar(max),
+  sharingimage varchar(max),
+  relatedimages varchar(max),
+  socialimageembeds varchar(max),
+  socialvideoembeds varchar(max),
+  quotations varchar(max),
+  allnames varchar(max),
+  amounts varchar(max),
+  translationinfo varchar(max),
+  extras varchar(max))
+DISTRIBUTE ON (gkgrecordid);
+GRANT ALL ON TABLE gdelt.gkg TO public;
+
 CREATE TABLE gdelt.mentions (
   globaleventid INT,
   eventtimedate BIGINT,

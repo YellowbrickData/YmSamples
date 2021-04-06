@@ -19,3 +19,5 @@ curl https://gdelt-open-data.s3.amazonaws.com/events/1979.csv >./samples/1979.cs
 curl https://gdelt-open-data.s3.amazonaws.com/events/20150906.export.csv >./samples/20150906.export.csv
 curl https://gdelt-open-data.s3.amazonaws.com/v2/events/20150218230000.export.csv >./samples/v2-20150218230000.export.csv
 curl https://gdelt-open-data.s3.amazonaws.com/v2/mentions/20150218230000.mentions.csv >./samples/v2-20150218230000.mentions.csv
+
+aws s3 cp 's3://gdelt-open-data/v2/gkg/20151105160000.gkg.csv' --no-sign-request samples
