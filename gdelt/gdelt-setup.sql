@@ -885,6 +885,7 @@ CREATE EXTERNAL FORMAT gdelt.gdelt_format
     , on_unescaped_embedded_quote 'PRESERVE'
     , on_missing_field 'SUPPLYNULL'
     , on_extra_field 'REMOVE'
+    , on_string_too_long 'TRUNCATE'
   );
 GRANT ALL ON EXTERNAL FORMAT gdelt.gdelt_format TO public;
 
