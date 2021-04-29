@@ -38,6 +38,7 @@ CREATE EXTERNAL FORMAT openaq.openaq_format
     , on_unescaped_embedded_quote 'PRESERVE'
     , on_missing_field 'SUPPLYNULL'
     , on_extra_field 'REMOVE'
+    , on_string_too_long 'TRUNCATE'
   );
 GRANT ALL ON EXTERNAL FORMAT openaq.openaq_format TO public;
 
