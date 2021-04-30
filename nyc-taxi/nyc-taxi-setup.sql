@@ -50,6 +50,30 @@ CREATE TABLE nyc_taxi.nyc_taxi_trips_green
 
 GRANT ALL ON TABLE nyc_taxi.nyc_taxi_trips_green TO public;
 
+CREATE TABLE nyc_taxi.nyc_taxi_trips_yellow
+(
+    "vendor_name" VARCHAR(max),
+    "Trip_Pickup_Datetime" VARCHAR(max),
+    "Trip_Dropoff_Datetime" VARCHAR(max),
+    "Passenger_Count" VARCHAR(max),
+    "Trip_Distance" VARCHAR(max),
+    "Start_Lon" VARCHAR(max),
+    "Start_Lat" VARCHAR(max),
+    "Rate_Code" VARCHAR(max),
+    "store_and_forward" VARCHAR(max),
+    "End_lon" VARCHAR(max),
+    "End_Lat" VARCHAR(max),
+    "Payment_Type" VARCHAR(max),
+    "Fare_Amt" VARCHAR(max),
+    "surcharge" VARCHAR(max),
+    "mta_tax" VARCHAR(max),
+    "Tip_Amt" VARCHAR(max),
+    "Tolls_Amt" VARCHAR(max),
+    "Total_Amt" VARCHAR(max)
+);
+
+GRANT ALL ON TABLE nyc_taxi.nyc_taxi_trips_yellow TO public;
+
 CREATE EXTERNAL STORAGE nyc_taxi.nyc_taxi_storage
   TYPE s3
   ENDPOINT 'https://s3.us-east-1.amazonaws.com/'
@@ -74,6 +98,6 @@ CREATE EXTERNAL LOCATION nyc_taxi.nyc_taxi_location
 GRANT ALL ON EXTERNAL LOCATION nyc_taxi.nyc_taxi_location TO public;
 
 
-CREATE EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_green_format TYPE csv WITH (delimiter ',', nullmarker '"', num_header_lines '1', trim_white 'true', on_extra_field 'REMOVE', on_missing_field 'SUPPLYNULL', skip_blank_lines 'true')
+CREATE EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_green_yellow_format TYPE csv WITH (delimiter ',', nullmarker '"', num_header_lines '1', trim_white 'true', on_extra_field 'REMOVE', on_missing_field 'SUPPLYNULL', skip_blank_lines 'true')
 
-GRANT ALL ON EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_green_format TO public;
+GRANT ALL ON EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_green_yellow_format TO public;
