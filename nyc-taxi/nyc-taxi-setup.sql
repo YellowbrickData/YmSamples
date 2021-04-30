@@ -26,11 +26,11 @@ GRANT ALL ON TABLE nyc_taxi.nyc_taxi_trips_fhvhv TO public;
 
 CREATE TABLE nyc_taxi.nyc_taxi_trips_green
 (
-    "VendorID"  integer,
+    "VendorID"  VARCHAR(max),
     "lpep_pickup_datetime" VARCHAR(max),
     "Lpep_dropoff_datetime"  VARCHAR(max),
     "Store_and_fwd_flag" VARCHAR(max),
-    "RateCodeID" integer,
+    "RateCodeID" VARCHAR(max),
     "Pickup_longitude" VARCHAR(max),
     "Pickup_Latitude" VARCHAR(max),
     "Dropoff_longitude" VARCHAR(max),
@@ -73,3 +73,7 @@ CREATE EXTERNAL LOCATION nyc_taxi.nyc_taxi_location
   EXTERNAL FORMAT nyc_taxi.nyc_taxi_format;
 GRANT ALL ON EXTERNAL LOCATION nyc_taxi.nyc_taxi_location TO public;
 
+
+CREATE EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_green_format TYPE csv WITH (delimiter ',', nullmarker '"', num_header_lines '1', trim_white 'true', on_extra_field 'REMOVE', on_missing_field 'SUPPLYNULL', skip_blank_lines 'true')
+
+GRANT ALL ON EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_green_format TO public;
