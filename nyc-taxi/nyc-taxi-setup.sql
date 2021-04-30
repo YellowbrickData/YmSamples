@@ -24,6 +24,32 @@ CREATE TABLE nyc_taxi.nyc_taxi_trips_fhvhv (
 );
 GRANT ALL ON TABLE nyc_taxi.nyc_taxi_trips_fhvhv TO public;
 
+CREATE TABLE nyc_taxi.nyc_taxi_trips_green
+(
+    "VendorID"  integer,
+    "lpep_pickup_datetime" VARCHAR(max),
+    "Lpep_dropoff_datetime"  VARCHAR(max),
+    "Store_and_fwd_flag" VARCHAR(max),
+    "RateCodeID" integer,
+    "Pickup_longitude" VARCHAR(max),
+    "Pickup_Latitude" VARCHAR(max),
+    "Dropoff_longitude" VARCHAR(max),
+    "Dropoff_latitude" VARCHAR(max),
+    "Passenger_count" VARCHAR(max),
+    "Trip_distance" VARCHAR(max),
+    "Fare_amount" VARCHAR(max),
+    "Extra" VARCHAR(max),
+    "MTA_tax" VARCHAR(max),
+    "Tip_amount" VARCHAR(max),
+    "Tolls_amount" VARCHAR(max),
+    "Ehail_fee" VARCHAR(max),
+    "Total_amount" VARCHAR(max),
+    "Payment_type" VARCHAR(max),
+    "Trip_type" VARCHAR(max)
+);
+
+GRANT ALL ON TABLE nyc_taxi.nyc_taxi_trips_green TO public;
+
 CREATE EXTERNAL STORAGE nyc_taxi.nyc_taxi_storage
   TYPE s3
   ENDPOINT 'https://s3.us-east-1.amazonaws.com/'
