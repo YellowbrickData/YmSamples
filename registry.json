@@ -1,0 +1,44 @@
+[
+  {
+    "name": "GDELT: Global Database of Events, Language, and Tone",
+    "id": "gdelt",
+    "icon": "gdelt/icon.svg",
+    "description": "Data from the GDELT project, \"an initiative to construct a catalog of human societal-scale behavior and beliefs across all countries of the world, connecting every person, organization, location, count, theme, news source, and event across the planet into a single massive network that captures what's happening around the world, what its context is and who's involved, and how the world is feeling about it, every single day.\"",
+    "actions": [
+       {
+         "name": "load",
+         "script": "gdelt/load.sql"
+       },
+       {
+         "name": "setup",
+         "script": "gdelt/setup.sql"
+       }
+    ],
+    "author": "Yellowbrick Staff",
+    "files": [
+      "gdelt/*.sql"
+    ],
+    "size": 56908316672
+  },
+  {
+    "name": "TPC-DS Scale Factor 1000",
+    "id": "tpcds-sf1000",
+    "icon": "tpcds-sf1000/icon.svg",
+    "description": "Industry standard TPC-DS benchmark, including queries for \"general purpose decision support systems\".",
+    "actions": [
+       {
+         "name": "load",
+         "script": "tpcds-sf1000/load.sql"
+       },
+       {
+         "name": "setup",
+         "script": "tpcds-sf1000/setup.sql"
+       }
+    ],
+    "author": "Yellowbrick Staff",
+    "files": [
+      "tpcds-sf1000/queries/*.sql"
+    ],
+    "size": 10737418240
+  }
+]
