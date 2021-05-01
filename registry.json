@@ -6,12 +6,12 @@
     "description": "Data from the GDELT project, \"an initiative to construct a catalog of human societal-scale behavior and beliefs across all countries of the world, connecting every person, organization, location, count, theme, news source, and event across the planet into a single massive network that captures what's happening around the world, what its context is and who's involved, and how the world is feeling about it, every single day.\"",
     "actions": [
        {
-         "name": "load",
-         "script": "gdelt/load.sql"
+         "name": "Setup",
+         "script": "gdelt/setup.sql"
        },
        {
-         "name": "setup",
-         "script": "gdelt/setup.sql"
+         "name": "Load",
+         "script": "gdelt/load.sql"
        }
     ],
     "author": "Yellowbrick Staff",
@@ -27,12 +27,16 @@
     "description": "Industry standard TPC-DS benchmark, including queries for \"general purpose decision support systems\".",
     "actions": [
        {
-         "name": "load",
+         "name": "Setup",
+         "script": "tpcds_sf1000/setup.sql"
+       },
+       {
+         "name": "Load",
          "script": "tpcds_sf1000/load.sql"
        },
        {
-         "name": "setup",
-         "script": "tpcds_sf1000/setup.sql"
+         "name": "Benchmark: 1-99",
+         "script": "tpcds_sf1000/benchmark.sql"
        }
     ],
     "author": "Yellowbrick Staff",
@@ -48,12 +52,12 @@
     "description": "Yellow and green taxi trip records including fields capturing pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.",
     "actions": [
        {
-         "name": "load",
-         "script": "nyc-taxi/load.sql"
+         "name": "Setup",
+         "script": "nyc-taxi/setup.sql"
        },
        {
-         "name": "setup",
-         "script": "nyc-taxi/setup.sql"
+         "name": "Load",
+         "script": "nyc-taxi/load.sql"
        }
     ],
     "author": "Yellowbrick Staff",
@@ -66,15 +70,15 @@
     "name": "Open Air Quality",
     "id": "openaq",
     "icon": "openaq/icon.svg",
-    "description": "including sensor data as a pilot and reference-grade data. Real-time and historical data is accessible.",
+    "description": "OpenAQ: air quality data including sensor data as a pilot and reference-grade data. Real-time and historical data is accessible.",
     "actions": [
        {
-         "name": "load",
-         "script": "openaq/load.sql"
+         "name": "Setup",
+         "script": "openaq/setup.sql"
        },
        {
-         "name": "setup",
-         "script": "openaq/setup.sql"
+         "name": "Load",
+         "script": "openaq/load.sql"
        }
     ],
     "author": "Yellowbrick Staff",
@@ -90,12 +94,12 @@
     "description": "A tiny database that contains actual English Premier League soccer results for about 20 seasons and details about each team in the league. You can run a script that creates and loads five small tables in about 5 seconds. These tables are used extensively in the main Yellowbrick documentation to provide simple, reproducible examples of SQL commands and functions. ",
     "actions": [
        {
-         "name": "load",
-         "script": "premdb/load.sql"
+         "name": "Setup",
+         "script": "premdb/setup.sql"
        },
        {
-         "name": "setup",
-         "script": "premdb/setup.sql"
+         "name": "Load",
+         "script": "premdb/load.sql"
        }
     ],
     "author": "Yellowbrick Staff",
