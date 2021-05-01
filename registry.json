@@ -40,5 +40,68 @@
       "tpcds_sf1000/queries/*.sql"
     ],
     "size": 10737418240
+  },
+  {
+    "name": "New York City Taxi Trips",
+    "id": "nyc-taxi",
+    "icon": "nyc-taxi/icon.svg",
+    "description": "Yellow and green taxi trip records including fields capturing pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.",
+    "actions": [
+       {
+         "name": "load",
+         "script": "nyc-taxi/load.sql"
+       },
+       {
+         "name": "setup",
+         "script": "nyc-taxi/setup.sql"
+       }
+    ],
+    "author": "Yellowbrick Staff",
+    "files": [
+      "nyc-taxi/*.sql"
+    ],
+    "size": 6908316672
+  },
+  {
+    "name": "Open Air Quality",
+    "id": "openaq",
+    "icon": "openaq/icon.svg",
+    "description": "including sensor data as a pilot and reference-grade data. Real-time and historical data is accessible.",
+    "actions": [
+       {
+         "name": "load",
+         "script": "openaq/load.sql"
+       },
+       {
+         "name": "setup",
+         "script": "openaq/setup.sql"
+       }
+    ],
+    "author": "Yellowbrick Staff",
+    "files": [
+      "openaq/*.sql"
+    ],
+    "size": 5690831662
+  },
+  {
+    "name": "Premier League Database",
+    "id": "premdb",
+    "icon": "premdb/icon.svg",
+    "description": "A tiny database that contains actual English Premier League soccer results for about 20 seasons and details about each team in the league. You can run a script that creates and loads five small tables in about 5 seconds. These tables are used extensively in the main Yellowbrick documentation to provide simple, reproducible examples of SQL commands and functions. ",
+    "actions": [
+       {
+         "name": "load",
+         "script": "premdb/load.sql"
+       },
+       {
+         "name": "setup",
+         "script": "premdb/setup.sql"
+       }
+    ],
+    "author": "Yellowbrick Staff",
+    "files": [
+      "premdb/*.sql"
+    ],
+    "size": 831662
   }
 ]
