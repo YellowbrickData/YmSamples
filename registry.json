@@ -22,22 +22,22 @@
   },
   {
     "name": "TPC-DS Scale Factor 1000",
-    "id": "tpcds-sf1000",
-    "icon": "tpcds-sf1000/icon.svg",
+    "id": "tpcds_sf1000",
+    "icon": "tpcds_sf1000/icon.svg",
     "description": "Industry standard TPC-DS benchmark, including queries for \"general purpose decision support systems\".",
     "actions": [
        {
          "name": "load",
-         "script": "tpcds-sf1000/load.sql"
+         "script": "tpcds_sf1000/load.sql"
        },
        {
          "name": "setup",
-         "script": "tpcds-sf1000/setup.sql"
+         "script": "tpcds_sf1000/setup.sql"
        }
     ],
     "author": "Yellowbrick Staff",
     "files": [
-      "tpcds-sf1000/queries/*.sql"
+      "tpcds_sf1000/queries/*.sql"
     ],
     "size": 10737418240
   }
