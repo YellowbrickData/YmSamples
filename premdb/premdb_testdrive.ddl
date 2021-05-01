@@ -1,3 +1,9 @@
+drop schema if exists premdb cascade;
+create schema if not exists premdb;
+grant all on schema premdb to public;
+grant usage on schema premdb to consumer;
+set schema 'premdb';
+
 drop table if exists season, team, hometeam, awayteam, match;
 
 drop external storage if exists premdbs3 cascade;
