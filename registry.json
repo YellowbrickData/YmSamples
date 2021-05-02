@@ -32,7 +32,7 @@
        },
        {
          "name": "Load",
-         "script": "tpcds_sf1000/load.sql"
+         "script": "tpcds_sf1000/load_all_tables.sql"
        },
        {
          "name": "Benchmark: 1-99",
@@ -41,7 +41,7 @@
     ],
     "author": "Yellowbrick Staff",
     "files": [
-      "tpcds_sf1000/queries/*.sql"
+      "tpcds_sf1000/query/*.sql"
     ],
     "size": 10737418240
   },
