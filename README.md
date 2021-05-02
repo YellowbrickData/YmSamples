@@ -10,7 +10,7 @@ Scripts are available for building and loading the following data sets:
 * **nyc-taxi**: Yellow and green [taxi trip records](https://data.cityofnewyork.us/Transportation/2018-Yellow-Taxi-Trip-Data/t29m-gskq) include fields capturing pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts. 
 * **openaq**: [Air quality data](https://openaq.org/#/projects?page=1), including sensor data as a pilot and reference-grade data. Real-time and historical data is accessible. 
 * **premdb**: A tiny database that contains actual English Premier League soccer results for about 20 seasons and details about each team in the league. You can run a script that creates and loads five small tables in about 5 seconds. These tables are used extensively in the main Yellowbrick documentation to provide simple, reproducible examples of SQL commands and functions. 
-* **tpcds_sf1000**: A 1TB version of the [TPC-DS](http://www.tpc.org/tpcds/) data set, which is frequently used by database companies for competitive benchmarking. This data set is pre-loaded into the yellowbrick_trialdatabase. Scripts are available for re-creating and loading these tables. 
+* **tpcds_sf1000**: A 1TB version of the [TPC-DS](http://www.tpc.org/tpcds/) data set, which is frequently used by database companies for competitive benchmarking. This data set is pre-loaded into the yellowbrick_trial database. Scripts are available for re-creating and loading these tables. 
 
 For example, to quickly build, load, and query the premdb tables:
 
