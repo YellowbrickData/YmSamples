@@ -7,7 +7,7 @@ Data at https://s3.console.aws.amazon.com/s3/buckets/yb-sampledata-d4f1c23ea7
 * load_all_tables.sql
 * load_<table_name>.sql
 ## Workflow:
-* One buttone load all: 
+* One button load all: 
   * Run one_button_load_tpcds_sf1000.sql to create the schema, external resources, tables and load all tables
 * Create resources and tables and load:
   * Run create_external_resources.sql
