@@ -902,6 +902,4 @@ ALTER TABLE catalog_sales
     ADD CONSTRAINT catalog_sales_cs_warehouse_sk_fkey FOREIGN KEY (cs_warehouse_sk) REFERENCES warehouse(w_warehouse_sk);
 
 
-
-
-
+GRANT SELECT ON ALL TABLES IN SCHEMA "tpcds_sf1000" TO public;
