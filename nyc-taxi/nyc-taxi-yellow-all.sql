@@ -7,7 +7,7 @@ LOAD TABLE nyc_taxi.nyc_taxi_trips_yellow
     'trip data/yellow_tripdata_202'
   )
   EXTERNAL LOCATION nyc_taxi.nyc_taxi_location
-  EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_yellow_yellow_format
+  EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_green_yellow_format
   WITH (
     num_readers '30',
     read_sources_concurrently 'ALWAYS',
