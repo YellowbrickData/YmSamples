@@ -25,7 +25,7 @@
         "include": "sql"
       }
     ],
-    "size": 10737418240
+    "size": 408773512396
   },
   {
     "name": "New York City Taxi Trips",
@@ -54,7 +54,7 @@
         "include": "sql"
       }
     ],
-    "size": 173087182028
+    "size": 48211007897
   },
   {
     "name": "Premier League Database",
@@ -105,7 +105,7 @@
         "include": "sql"
       }
     ],
-    "size": 5690831662
+    "size": 362807296
   },
   {
     "name": "GDELT: Global Database of Events, Language, and Tone",
