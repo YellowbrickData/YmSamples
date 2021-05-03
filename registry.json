@@ -91,11 +91,11 @@
     "actions": [
        {
          "name": "Setup",
-         "script": "openaq/setup.sql"
+         "script": "openaq/openaq-setup.sql"
        },
        {
          "name": "Load",
-         "script": "openaq/load.sql"
+         "script": "openaq/openaq-all.sql"
        }
     ],
     "author": "Yellowbrick Staff",
@@ -115,11 +115,11 @@
     "actions": [
        {
          "name": "Setup",
-         "script": "gdelt/setup.sql"
+         "script": "gdelt/gdelt-setup.sql"
        },
        {
-         "name": "Load",
-         "script": "gdelt/load.sql"
+         "name": "Load Events",
+         "script": "gdelt/gdelt-events-all.sql"
        }
     ],
     "author": "Yellowbrick Staff",
