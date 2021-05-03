@@ -16,7 +16,10 @@
     ],
     "author": "Yellowbrick Staff",
     "files": [
-      "gdelt/*.sql"
+      {
+        "dir": "gdelt",
+        "include": "sql"
+      }
     ],
     "size": 56908316672
   },
@@ -41,7 +44,10 @@
     ],
     "author": "Yellowbrick Staff",
     "files": [
-      "tpcds_sf1000/query/*.sql"
+      {
+        "dir": "tpcds_sf1000/query",
+        "include": "sql"
+      }
     ],
     "size": 10737418240
   },
@@ -62,7 +68,10 @@
     ],
     "author": "Yellowbrick Staff",
     "files": [
-      "nyc-taxi/*.sql"
+      {
+        "dir": "nyc-taxi",
+        "include": "sql"
+      }
     ],
     "size": 6908316672
   },
@@ -83,7 +92,10 @@
     ],
     "author": "Yellowbrick Staff",
     "files": [
-      "openaq/*.sql"
+      {
+        "dir": "openaq",
+        "include": "sql"
+      }
     ],
     "size": 5690831662
   },
@@ -104,7 +116,10 @@
     ],
     "author": "Yellowbrick Staff",
     "files": [
-      "premdb/*.sql"
+      {
+        "dir": "premdb",
+        "include": "sql|ddl"
+      }
     ],
     "size": 831662
   }
