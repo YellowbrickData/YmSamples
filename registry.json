@@ -43,7 +43,7 @@
            "nyc-taxi/nyc-taxi-fhv-all.sql",
            "nyc-taxi/nyc-taxi-fhvhv-all.sql",
            "nyc-taxi/nyc-taxi-green-all.sql",
-           "nyc-taxi/nyc-taxi-green-yellow.sql"
+           "nyc-taxi/nyc-taxi-yellow-all.sql"
          ]
        }
     ],
