@@ -25,7 +25,7 @@
         "include": "sql"
       }
     ],
-    "size": 408773512396
+    "size": 380700000000
   },
   {
     "name": "New York City Taxi Trips",
@@ -54,7 +54,7 @@
         "include": "sql"
       }
     ],
-    "size": 48211007897
+    "size": 44900000000
   },
   {
     "name": "Premier League Database",
@@ -129,6 +129,6 @@
         "include": "sql"
       }
     ],
-    "size": 56693568307
+    "size": 52800000000
   }
 ]
