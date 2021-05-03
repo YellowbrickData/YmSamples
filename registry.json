@@ -1,29 +1,5 @@
 [
   {
-    "name": "GDELT: Global Database of Events, Language, and Tone",
-    "id": "gdelt",
-    "icon": "gdelt/icon.svg",
-    "description": "Data from the GDELT project, \"an initiative to construct a catalog of human societal-scale behavior and beliefs across all countries of the world, connecting every person, organization, location, count, theme, news source, and event across the planet into a single massive network that captures what's happening around the world, what its context is and who's involved, and how the world is feeling about it, every single day.\"",
-    "actions": [
-       {
-         "name": "Setup",
-         "script": "gdelt/setup.sql"
-       },
-       {
-         "name": "Load",
-         "script": "gdelt/load.sql"
-       }
-    ],
-    "author": "Yellowbrick Staff",
-    "files": [
-      {
-        "dir": "gdelt",
-        "include": "sql"
-      }
-    ],
-    "size": 56908316672
-  },
-  {
     "name": "TPC-DS Scale Factor 1000",
     "id": "tpcds_sf1000",
     "icon": "tpcds_sf1000/icon.svg",
@@ -59,11 +35,16 @@
     "actions": [
        {
          "name": "Setup",
-         "script": "nyc-taxi/setup.sql"
+         "script": "nyc-taxi/nyc-taxi-setup.sql"
        },
        {
          "name": "Load",
-         "script": "nyc-taxi/load.sql"
+         "scripts": [
+           "nyc-taxi/nyc-taxi-fhv-all.sql",
+           "nyc-taxi/nyc-taxi-fhvhv-all.sql",
+           "nyc-taxi/nyc-taxi-green-all.sql",
+           "nyc-taxi/nyc-taxi-green-yellow.sql"
+         ]
        }
     ],
     "author": "Yellowbrick Staff",
@@ -73,7 +54,31 @@
         "include": "sql"
       }
     ],
-    "size": 6908316672
+    "size": 173087182028
+  },
+  {
+    "name": "Premier League Database",
+    "id": "premdb",
+    "icon": "premdb/icon.svg",
+    "description": "A tiny database that contains actual English Premier League soccer results for about 20 seasons and details about each team in the league. You can run a script that creates and loads five small tables in about 5 seconds. These tables are used extensively in the main Yellowbrick documentation to provide simple, reproducible examples of SQL commands and functions. ",
+    "actions": [
+       {
+         "name": "Setup",
+         "script": "premdb/setup.sql"
+       },
+       {
+         "name": "Load",
+         "script": "premdb/load.sql"
+       }
+    ],
+    "author": "Yellowbrick Staff",
+    "files": [
+      {
+        "dir": "premdb",
+        "include": "sql|ddl"
+      }
+    ],
+    "size": 831662
   },
   {
     "name": "Open Air Quality",
@@ -100,27 +105,27 @@
     "size": 5690831662
   },
   {
-    "name": "Premier League Database",
-    "id": "premdb",
-    "icon": "premdb/icon.svg",
-    "description": "A tiny database that contains actual English Premier League soccer results for about 20 seasons and details about each team in the league. You can run a script that creates and loads five small tables in about 5 seconds. These tables are used extensively in the main Yellowbrick documentation to provide simple, reproducible examples of SQL commands and functions. ",
+    "name": "GDELT: Global Database of Events, Language, and Tone",
+    "id": "gdelt",
+    "icon": "gdelt/icon.svg",
+    "description": "Data from the GDELT project, \"an initiative to construct a catalog of human societal-scale behavior and beliefs across all countries of the world, connecting every person, organization, location, count, theme, news source, and event across the planet into a single massive network that captures what's happening around the world, what its context is and who's involved, and how the world is feeling about it, every single day.\"",
     "actions": [
        {
          "name": "Setup",
-         "script": "premdb/setup.sql"
+         "script": "gdelt/setup.sql"
        },
        {
          "name": "Load",
-         "script": "premdb/load.sql"
+         "script": "gdelt/load.sql"
        }
     ],
     "author": "Yellowbrick Staff",
     "files": [
       {
-        "dir": "premdb",
-        "include": "sql|ddl"
+        "dir": "gdelt",
+        "include": "sql"
       }
     ],
-    "size": 831662
+    "size": 56693568307
   }
 ]
