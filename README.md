@@ -21,4 +21,4 @@ For example, to quickly build, load, and query the premdb tables:
 
 # Contributing
 
-Yellowbrick Data welcomes contributions for sample data sets.   Please see [contributing.md](contributing.md) for more details.
+Yellowbrick Data welcomes contributions for sample data sets.   Please see [contributing.md](CONTRIBUTING.md) for more details.
