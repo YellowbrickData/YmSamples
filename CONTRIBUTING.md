@@ -4,26 +4,21 @@ Contributions are always welcome!
 
 ## Process
 
-Fork and clone the repo, and add a new directory containing your .sql files.  Usually,
-it is best to separate "setup" or DDL activity from "load" activity.  Having separate
-.sql files per sample query is also a good idea.
+Fork and clone the repo, and add a new directory containing your .sql files. Usually, it is best to separate "setup" or DDL activity from "load" activity. Having separate .sql files per sample query is also a good idea.
 
 Each sample must have:
- - a README.md file
- - an icon.svg file
- - 1 or more .sql or .ddl files
 
-Once the structure for the sample is in place, hook it into the registry.  To publish,
-add an entry to registry.json (format below), supplying summary information and other
-metdata.
+1. A README.md file
+2. An icon.svg file
+3. One or more .sql or .ddl files
+
+Once the structure for the sample is in place, hook it into the registry. To publish, add an entry to registry.json (see format below), supplying summary information and other metadata.
 
 When you are done with your example, send a pull request!
 
-
 ## Registry
 
-The registry.json file lives in the root of this repository, and contains one entry
-per sample.  A sample appears below:
+The registry.json file lives in the root of this repository, and contains one entry per sample. A sample appears below:
 
 ```
   {
@@ -56,16 +51,14 @@ per sample.  A sample appears below:
 
 ```
 
-Besides indicating name, description, author, icon and size, which is used to drive the Sample Catalog,
-a section is provided to supply "actions" and "files".
+As well as the name, description, author, icon, and size values, which drive the Sample Catalog, additional sections supply "actions" and "files."
 
 ### Actions
 
 Actions are simply shortcuts to sets of .sql that go together to get the sample up and running quickly.
-The actions for the sample is an array of object, each containing a name and one or more scripts.  When
-more than one script is provided, Yellowbrick Manager will load all the scripts and concatenate them together.
+
+The action for the sample is an array of objects, each containing a name and one or more scripts. When more than one script is provided, Yellowbrick Manager will load all the scripts and concatenate them.
 
 ### Files
 
-To supply shortcuts to commonly used files (ie. queries), supply one or more directories along with include
-regular expression to fine-tune.
+To enable shortcuts to commonly used files (such as queries), supply one or more directories, along with an "include" regular expression to fine-tune the file types. 
