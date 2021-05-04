@@ -4,7 +4,7 @@ This small data set contains 5 tables with actual scores from English Premier Le
 
 ### Source
 
- * S3 Bucket: `https://s3.console.aws.amazon.com/s3/buckets/yb-sampledata-d4f1c23ea7`
+ * S3 Bucket: https://s3.console.aws.amazon.com/s3/buckets/yb-sampledata-d4f1c23ea7
 
 ### Tables
 
