@@ -1,7 +1,10 @@
 name: New York City Taxi Trips
 id: nyc-taxi
 icon: nyc-taxi/icon.svg
-description: Yellow and green taxi trip records including fields capturing pick-up
+description: |-
+  **Source**: https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+
+  Yellow and green taxi trip records including fields capturing pick-up
   and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized
   fares, rate types, payment types, and driver-reported passenger counts.
 actions:
