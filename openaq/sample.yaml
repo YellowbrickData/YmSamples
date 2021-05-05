@@ -1,0 +1,16 @@
+name: Open Air Quality
+id: openaq
+icon: openaq/icon.svg
+description: 'OpenAQ: air quality data including sensor data as a pilot and reference-grade
+  data. Real-time and historical data is accessible.'
+actions:
+- name: Setup
+  script: openaq/openaq-setup.sql
+- name: Load
+  script: openaq/openaq-all.sql
+author: Yellowbrick Staff
+files:
+- dir: openaq
+  include: sql
+size: 362807296
+hidden: true

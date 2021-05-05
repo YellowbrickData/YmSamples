@@ -1,0 +1,20 @@
+name: New York City Taxi Trips
+id: nyc-taxi
+icon: nyc-taxi/icon.svg
+description: Yellow and green taxi trip records including fields capturing pick-up
+  and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized
+  fares, rate types, payment types, and driver-reported passenger counts.
+actions:
+- name: Setup
+  script: nyc-taxi/nyc-taxi-setup.sql
+- name: Load
+  scripts:
+  - nyc-taxi/nyc-taxi-fhv-all.sql
+  - nyc-taxi/nyc-taxi-fhvhv-all.sql
+  - nyc-taxi/nyc-taxi-green-all.sql
+  - nyc-taxi/nyc-taxi-yellow-all.sql
+author: Yellowbrick Staff
+files:
+- dir: nyc-taxi
+  include: sql
+size: 44900000000

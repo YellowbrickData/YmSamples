@@ -1,0 +1,19 @@
+name: TPC-DS Scale Factor 1000
+id: tpcds_sf1000
+icon: tpcds_sf1000/icon.svg
+description: |-
+  **Source**: http://www.tpc.org/tpcds/
+
+  > TPC-DS is a decision support benchmark that models several generally applicable aspects of a decision support system, including queries and data maintenance. ... The purpose of TPC benchmarks is to provide relevant, objective performance data to industry users. TPC-DS enables emerging technologies, such as Big Data systems, to execute the benchmark.
+actions:
+- name: Setup
+  script: tpcds_sf1000/setup.sql
+- name: Load
+  script: tpcds_sf1000/load_all_tables.sql
+- name: 'Benchmark: 1-99'
+  script: tpcds_sf1000/benchmark.sql
+author: Yellowbrick Staff
+files:
+- dir: tpcds_sf1000/query
+  include: sql
+size: 380700000000
