@@ -3,7 +3,7 @@
     "name": "TPC-DS Scale Factor 1000",
     "id": "tpcds_sf1000",
     "icon": "tpcds_sf1000/icon.svg",
-    "description": "Industry standard TPC-DS benchmark, including queries for \"general purpose decision support systems\".",
+    "description": "TPC-DS is a decision support benchmark that models several generally applicable aspects of a decision support system, including queries and data maintenance. The benchmark provides a representative evaluation of performance as a general purpose decision support system. A benchmark result measures query response time in single user mode, query throughput in multi user mode and data maintenance performance for a given hardware, operating system, and data processing system configuration under a controlled, complex, multi-user decision support workload. The purpose of TPC benchmarks is to provide relevant, objective performance data to industry users. TPC-DS enables emerging technologies, such as Big Data systems, to execute the benchmark.\n\nSource: http://www.tpc.org/tpcds/",
     "actions": [
        {
          "name": "Setup",
