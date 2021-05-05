@@ -7,7 +7,7 @@ A 1TB (scale-factor 1000) version of the TPC-DS data set, which is frequently us
 ## Tables
 TPC-DS 1000 consists of 24 tables of various sizes, holding about 6 billion rows in total. 
 
-|          name          |    rows    | compressed_mb
+|          Name          |   # Rows   | Size (MiB)
 |------------------------|------------|---------------
 | call_center            |        630 |            30
 | catalog_page           |     450000 |            30
