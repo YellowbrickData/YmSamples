@@ -7,6 +7,33 @@ A 1TB (scale-factor 1000) version of the TPC-DS data set, which is frequently us
 ## Tables
 TPC-DS 1000 consists of 24 tables of various sizes, holding about 6 billion rows in total. 
 
+|          name          |    rows    | compressed_mb
+|------------------------|------------|---------------
+| call_center            |        630 |            30
+| catalog_page           |     450000 |            30
+| catalog_returns        |  143996756 |         10298
+| catalog_sales          | 1439980416 |        110312
+| customer               |   12000000 |           840
+| customer_address       |   90000000 |          1860
+| customer_demographics  |   28812000 |           120
+| date_dim               |    1095735 |            30
+| household_demographics |     108000 |            30
+| income_band            |        300 |            30
+| inventory              |  783000000 |          3618
+| item                   |    4500000 |           450
+| promotion              |      22500 |            30
+| reason                 |        975 |            30
+| ship_mode              |        300 |            30
+| store                  |      15030 |            30
+| store_returns          |  287999764 |         15372
+| store_sales            | 2879987999 |        166276
+| time_dim               |    1296000 |            30
+| warehouse              |        300 |            30
+| web_page               |      45000 |            30
+| web_returns            |   71997522 |          4890
+| web_sales              |  720000376 |         51256
+| web_site               |        810 |            30
+
 ## Scripts
 
 * `one_button_load_tpcds_sf1000.sql`
