@@ -6,18 +6,22 @@ REPO_DIR="$(cd ${SCRIPT_DIR}/../ && pwd)"
 UPDATED_SAMPLE=`git diff --cached --name-only|grep sample.yaml`
 if [[ ! -z "$UPDATED_SAMPLE" ]]
 then
-    echo "YmSamples: [$UPDATED_SAMPLE]"
+    echo "YmSamples: sample changes: [$UPDATED_SAMPLE]"
 
     # If user didn't include registry.yaml in commit, we fail
     UPDATED_REGISTRY=`git diff --cached --name-only|grep registry.yaml`
-    UPDATED_REGISTRY= # disabled
-    if [[ ! -z "$UPDATED_REGISTRY" ]]
+    echo "YmSamples: registry changes: [$UPDATED_REGISTRY]"
+    if [[ -z "$UPDATED_REGISTRY" ]]
     then
         echo "YmSamples: Detected modification to sample.yaml metadata"
         echo "           but no registry.yaml was included in your commit."
         echo
-        echo "YmSamples: Please run ${REPO_DIR}/scripts/updateregistry.sh"
+        echo "           Please run ${REPO_DIR}/scripts/updateregistry.sh"
         echo "           and include the result with your commit."
         exit 1
+    else
+        echo "YmSamples: registry.yaml updated"
     fi
+else
+    echo "YmSamples: no sample.yaml changes"
 fi
