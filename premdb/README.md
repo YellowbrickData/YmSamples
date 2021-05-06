@@ -6,6 +6,13 @@ This small data set contains 5 tables with actual scores from English Premier Le
 
  * S3 Bucket: https://s3.console.aws.amazon.com/s3/buckets/yb-sampledata-d4f1c23ea7
 
+### Scripts
+
+* `premdb_testdrive.ddl`: creates and loads five premdb tables
+* `premdb_external_objects.ddl`: creates an external storage, an external format, and an external location
+* `newmatchstats.ddl`: creates the newmatchstats table
+* `queries/*.sql`: a few queries that you can run
+* 
 ### Tables
 
  1. **match:** Full-time and half-time scores for matches with foreign keys for the season, home team, and away team values
@@ -14,13 +21,11 @@ This small data set contains 5 tables with actual scores from English Premier Le
  4. **hometeam:** Home team ID and team name, used for joins
  5. **awayteam:** Away team ID and team name, used for joins
 
-(A larger additional table is available, **newmatchstats**, but this table does not contain meaningful data. It can be used to demonstrate a very simple load of 25 million rows.)  
+An additional table, **newmatchstats**, is available but does not contain meaningful data. It is used in the tutorial to demonstrate a very simple load of 25 million rows. 
 
 ### Samples
 
-After loading this sample data set, you can perform analytic queries on the match data.
-
-Sample query:
+After loading this sample data set, you can perform analytic queries on the match data. For example:
 
 ```sql
 select t1.season_name, t1.winners, homegoals+awaygoals as total

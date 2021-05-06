@@ -4,7 +4,7 @@ Contributions are always welcome!
 
 ## Setup
 
-To update this repo, we require a commit hook to be installed.  A one-time setup
+To update this repo, we require a commit hook to be installed. A one-time setup
 step should be run:
 
 ```
@@ -22,18 +22,16 @@ Each sample must have:
 3. An icon.svg file
 4. One or more .sql or .ddl files
 
-Once the structure for the sample is in place, the registry must be updated.  To
+Once the structure for the sample is in place, the registry must be updated. To
 update the registry, run the `scripts/updateregistry.sh` script.
 
 When you are done with your example, send a pull request!
 
-NB: Your sample can stay hidden until you are ready to publish by adding a hidden: true
-attribute.
+Note: Your sample can stay hidden until you are ready to publish by adding a `hidden:true` attribute.
 
 ## Registry
 
-The registry.yaml file lives in the root of this repository, and contains one entry per sample.  Each sample
-contributes its sample.yaml file to the whole document using the `scripts/updateregistry.sh` script.
+The registry.yaml file lives in the root of this repository, and contains one entry per sample. Each sample contributes its sample.yaml file to the whole document using the `scripts/updateregistry.sh` script.
 
 A `sample.yaml` file appears below:
 
@@ -64,7 +62,7 @@ As well as the name, description, author, icon, and size values, which drive the
 
 ### Description
 
-The description should be short, as it is included in the top-level catalog browser.  It may include markdown content.
+The description should be short, as it is included in the top-level catalog browser. It may include markdown content.
 
 ### Actions
 
@@ -74,4 +72,4 @@ The action for the sample is an array of objects, each containing a name and one
 
 ### Files
 
-To enable shortcuts to commonly used files (such as queries), supply one or more directories, along with an "include" regular expression to fine-tune the file types.
+To enable shortcuts to commonly used files (such as queries), supply one or more directories, along with an `include` regular expression to fine-tune the file types.
