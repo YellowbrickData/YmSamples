@@ -4,8 +4,7 @@ icon: tpcds_sf1000/icon.svg
 description: |-
   **Source**: http://www.tpc.org/tpcds/
 
-TPC-DS is a performance benchmark that can generate a database at different scale factors. The TPC-DS data set supports SQL queries and and other decision-support operations as a means of providing objective performance data for existing and emerging technologies in data warehousing and other domains where fast response times are critical.
-  
+  TPC-DS is a performance benchmark that can generate a database at different scale factors. The TPC-DS data set supports SQL queries and and other decision-support operations as a means of providing objective performance data for existing and emerging technologies in data warehousing and other domains where fast response times are critical.
 actions:
 - name: Setup
   script: tpcds_sf1000/setup.sql
