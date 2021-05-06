@@ -17,3 +17,4 @@ files:
 - dir: tpcds_sf1000/query
   include: sql
 size: 380700000000
+schema: tpcds_sf1000

@@ -21,3 +21,4 @@ files:
 - dir: nyc-taxi
   include: sql
 size: 44900000000
+schema: nyc_taxi

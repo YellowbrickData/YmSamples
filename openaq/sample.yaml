@@ -14,3 +14,5 @@ files:
   include: sql
 size: 362807296
 hidden: true
+schema: openaq
+
