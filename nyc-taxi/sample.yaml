@@ -21,4 +21,5 @@ files:
 - dir: nyc-taxi
   include: sql
 size: 44900000000
+database: yellowbrick_trial
 schema: nyc_taxi

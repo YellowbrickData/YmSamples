@@ -18,4 +18,5 @@ files:
 - dir: premdb/queries
   include: sql|ddl
 size: 831662
+database: yellowbrick_trial
 schema: premdb

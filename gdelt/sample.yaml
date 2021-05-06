@@ -17,4 +17,5 @@ files:
 - dir: gdelt
   include: sql
 size: 52800000000
+database: yellowbrick_trial
 schema: gdelt

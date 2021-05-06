@@ -22,6 +22,7 @@ files:
 - dir: nyc-taxi
   include: sql
 size: 44900000000
+database: yellowbrick_trial
 schema: nyc_taxi
 
 
@@ -45,6 +46,7 @@ files:
 - dir: tpcds_sf1000/query
   include: sql
 size: 380700000000
+database: yellowbrick_trial
 schema: tpcds_sf1000
 
 
@@ -68,6 +70,7 @@ files:
 - dir: gdelt
   include: sql
 size: 52800000000
+database: yellowbrick_trial
 schema: gdelt
 
 
@@ -88,6 +91,7 @@ files:
   include: sql
 size: 362807296
 hidden: true
+database: yellowbrick_trial
 schema: openaq
 
 
@@ -113,6 +117,7 @@ files:
 - dir: premdb/queries
   include: sql|ddl
 size: 831662
+database: yellowbrick_trial
 schema: premdb
 
 

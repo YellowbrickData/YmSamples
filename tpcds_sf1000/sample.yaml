@@ -17,4 +17,5 @@ files:
 - dir: tpcds_sf1000/query
   include: sql
 size: 380700000000
+database: yellowbrick_trial
 schema: tpcds_sf1000
