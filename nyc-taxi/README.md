@@ -12,10 +12,10 @@ driver-reported passenger counts.
 
 ### Tables
 
- 1. **FHV** For-Hire Vehicle, provided by bases (Limos, Black Cars, etc)
- 2. **FHVHV** High Volume For-Hire Vehicle (eg. Uber, Lyft, etc)
- 3. **green** Green Taxi Vehicles
- 4. **yellow** Yellow Taxi Vehicles
+ 1. **nyc_taxi_trips_fhv** For-Hire Vehicle, provided by bases (Limos, Black Cars, etc)
+ 2. **nyc_taxi_trips_fhvhv** High Volume For-Hire Vehicle (eg. Uber, Lyft, etc)
+ 3. **nyc_taxi_trips_green** Green Taxi Vehicles
+ 4. **nyc_taxi_trips_yellow** Yellow Taxi Vehicles
 
 ### Samples
 
