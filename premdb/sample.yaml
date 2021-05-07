@@ -7,8 +7,10 @@ description: 'A tiny database that contains actual English Premier League soccer
   tables are used extensively in the main Yellowbrick documentation to provide simple,
   reproducible examples of SQL commands and functions. '
 actions:
-- name: Setup/Load
+- name: Setup/Load 1
   script: premdb/premdb_testdrive.ddl
+- name: Setup/Load 2
+  script: premdb/newmatchstats.ddl
 author: Yellowbrick Staff
 files:
 - dir: premdb
