@@ -9,6 +9,7 @@ curl https://www.gdeltproject.org/data/lookups/CAMEO.eventcodes.txt >./lookup-ta
 curl https://www.gdeltproject.org/data/lookups/CAMEO.goldsteinscale.txt >./lookup-tables/goldsteinscale.txt
 
 # Listings
+mkdir listings
 curl https://gdelt-open-data.s3.amazonaws.com/ |xmllint --pretty 1 - >./listings/bucket.xml
 aws s3 ls 's3://gdelt-open-data/v2/events/' --no-sign-request >./listings/v2-events.listing
 aws s3 ls 's3://gdelt-open-data/v2/mentions/' --no-sign-request >./listings/v2-mentions.listing

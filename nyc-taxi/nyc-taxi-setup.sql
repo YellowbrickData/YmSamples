@@ -73,6 +73,54 @@ CREATE TABLE nyc_taxi.nyc_taxi_trips_yellow
 );
 GRANT ALL ON TABLE nyc_taxi.nyc_taxi_trips_yellow TO public;
 
+CREATE VIEW nyc_taxi.trips
+AS
+  SELECT
+     vendor_id
+   , 'green' AS cab_type
+   , lpep_pickup_datetime AS pickup_datetime
+   , lpep_dropoff_datetime AS dropoff_datetime
+   , store_and_fwd_flag
+   , rate_code_id
+   , pu_location_id
+   , do_location_id
+   , passenger_count
+   , trip_distance
+   , fare_amount
+   , extra
+   , mta_tax
+   , tip_amount
+   , tolls_amount
+   , improvement_surcharge
+   , total_amount
+   , payment_type
+  FROM nyc_taxi.nyc_taxi_trips_green
+
+  UNION ALL
+
+  SELECT
+     vendor_id
+   , 'yellow' AS cab_type
+   , tpep_pickup_datetime AS pickup_datetime
+   , tpep_dropoff_datetime AS dropoff_datetime
+   , store_and_forward_flag AS store_and_fwd_flag
+   , rate_code_id
+   , pu_location_id
+   , do_location_id
+   , passenger_count
+   , trip_distance
+   , fare_amount
+   , extra
+   , mta_tax
+   , tip_amount
+   , tolls_amount
+   , improvement_surcharge
+   , total_amount
+   , payment_type
+  FROM nyc_taxi.nyc_taxi_trips_yellow
+;
+GRANT ALL ON VIEW nyc_taxi.trips TO public;
+
 CREATE EXTERNAL STORAGE nyc_taxi.nyc_taxi_storage
   TYPE s3
   ENDPOINT 'https://s3.us-east-1.amazonaws.com/'

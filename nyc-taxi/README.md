@@ -34,3 +34,5 @@ SELECT 'green' as source, avg(total_amount) as average_total_amount, avg(tip_amo
 FROM nyc_taxi.nyc_taxi_trips_green
 
 ```
+
+**Note:** some sample queries were inspired by this great blog article for taxi trip analysis: https://tech.marksblogg.com/omnisci-macos-macbookpro-mbp.html...thanks!

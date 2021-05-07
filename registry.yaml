@@ -19,7 +19,7 @@ actions:
   - nyc-taxi/nyc-taxi-yellow-all.sql
 author: Yellowbrick Staff
 files:
-- dir: nyc-taxi
+- dir: nyc-taxi/queries
   include: sql
 size: 44900000000
 database: yellowbrick_trial
@@ -64,7 +64,14 @@ actions:
 - name: Setup
   script: gdelt/gdelt-setup.sql
 - name: Load Events
-  script: gdelt/gdelt-events-all.sql
+  scripts:
+  - gdelt/gdelt-events-all.sql
+- name: Load Mentions
+  scripts:
+  - gdelt/gdelt-v2-mentions-all.sql
+- name: Load GKG
+  scripts:
+  - gdelt/gdelt-gkg-all.sql
 author: Yellowbrick Staff
 files:
 - dir: gdelt/queries

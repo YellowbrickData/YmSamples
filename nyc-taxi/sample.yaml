@@ -18,7 +18,7 @@ actions:
   - nyc-taxi/nyc-taxi-yellow-all.sql
 author: Yellowbrick Staff
 files:
-- dir: nyc-taxi
+- dir: nyc-taxi/queries
   include: sql
 size: 44900000000
 database: yellowbrick_trial
