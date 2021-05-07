@@ -1,12 +1,12 @@
-drop table newmatchstats;
+set schema 'premdb';
 
-create table newmatchstats as select seasonid, matchday::date, htid, atid from match order by 1,2,3,4;
+drop table if exists newmatchstats;
+
+create table if not exists newmatchstats as select seasonid, matchday::date, htid, atid from match order by 1,2,3,4;
 
 alter table newmatchstats add column moment varchar(5);
 
 update newmatchstats set moment='01:00';
-
-deallocate moment;
 
 prepare moment(varchar(5)) as insert into newmatchstats select seasonid,matchday,htid,atid,$1 from match;
 
@@ -188,8 +188,4 @@ execute moment('89:00');
 
 execute moment('90:00');
 
-grant select on newmatchstats to bobr;
-
-grant insert on newmatchstats to bobr;
-
-
+grant select on newmatchstats to public;
