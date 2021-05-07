@@ -8,9 +8,7 @@ description: 'A tiny database that contains actual English Premier League soccer
   reproducible examples of SQL commands and functions. '
 actions:
 - name: Setup/Load
-  scripts:
-  - premdb/premdb_external_objects.ddl
-  - premdb/premdb_testdrive.ddl
+  script: premdb/premdb_testdrive.ddl
 author: Yellowbrick Staff
 files:
 - dir: premdb
