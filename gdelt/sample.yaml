@@ -14,7 +14,7 @@ actions:
   script: gdelt/gdelt-events-all.sql
 author: Yellowbrick Staff
 files:
-- dir: gdelt
+- dir: gdelt/queries
   include: sql
 size: 52800000000
 database: yellowbrick_trial
