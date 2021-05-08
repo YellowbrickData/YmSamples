@@ -4,8 +4,8 @@ GRANT ALL ON SCHEMA nyc_taxi TO PUBLIC;
 
 CREATE TABLE nyc_taxi.nyc_taxi_trips_fhv (
   "dispatching_base_num" VARCHAR(max) NULL,
-  "pickup_datetime" VARCHAR(max) NULL,
-  "dropoff_datetime" VARCHAR(max) NULL,
+  "pickup_datetime" TIMESTAMP NULL,
+  "dropoff_datetime" TIMESTAMP NULL,
   "pu_location_id" VARCHAR(max) NULL,
   "do_location_id" VARCHAR(max) NULL,
   "sr_flag" VARCHAR(max) NULL
@@ -15,8 +15,8 @@ GRANT ALL ON TABLE nyc_taxi.nyc_taxi_trips_fhv TO public;
 CREATE TABLE nyc_taxi.nyc_taxi_trips_fhvhv (
   "hvfhs_license_num" VARCHAR(max),
   "dispatching_base_num" VARCHAR(max),
-  "pickup_datetime" VARCHAR(max),
-  "dropoff_datetime" VARCHAR(max),
+  "pickup_datetime" TIMESTAMP,
+  "dropoff_datetime" TIMESTAMP,
   "pu_location_id" VARCHAR(max),
   "do_location_id" VARCHAR(max),
   "sr_flag" VARCHAR(max)
@@ -27,7 +27,7 @@ CREATE TABLE nyc_taxi.nyc_taxi_trips_green
 (
   -- VendorID,lpep_pickup_datetime,lpep_dropoff_datetime,store_and_fwd_flag,RatecodeID,PULocationID,DOLocationID,passenger_count,trip_distance,fare_amount,extra,mta_tax,tip_amount,tolls_amount,ehail_fee,improvement_surcharge,total_amount,payment_type,trip_type,congestion_surcharge
   "vendor_id"  VARCHAR(max),
-  "lpep_pickup_datetime" VARCHAR(max),
+  "lpep_pickup_datetime" TIMESTAMP,
   "lpep_dropoff_datetime"  VARCHAR(max),
   "store_and_fwd_flag" VARCHAR(max),
   "rate_code_id" INTEGER,
@@ -53,8 +53,8 @@ CREATE TABLE nyc_taxi.nyc_taxi_trips_yellow
 (
   -- VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount,congestion_surcharge
   "vendor_id" VARCHAR(max),
-  "tpep_pickup_datetime" VARCHAR(max),
-  "tpep_dropoff_datetime" VARCHAR(max),
+  "tpep_pickup_datetime" TIMESTAMP,
+  "tpep_dropoff_datetime" TIMESTAMP,
   "passenger_count" INTEGER,
   "trip_distance" DECIMAL(18,2),
   "rate_code_id" INTEGER,

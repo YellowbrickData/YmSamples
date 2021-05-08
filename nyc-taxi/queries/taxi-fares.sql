@@ -1,8 +1,8 @@
-SELECT EXTRACT(year from pickup_datetime::timestamptz),
+SELECT EXTRACT(year from pickup_datetime),
        cab_type,
        AVG(fare_amount / trip_distance) AS fare_per_distance
 FROM nyc_taxi.trips
 WHERE trip_distance > 0
-AND EXTRACT(year from pickup_datetime::timestamptz) <= 2021
+AND EXTRACT(year from pickup_datetime) <= 2021
 GROUP BY 1, 2
 ORDER BY 1, 2;

@@ -1,7 +1,7 @@
 LOAD TABLE nyc_taxi.nyc_taxi_trips_fhv
   SOURCE FIELDS (
     dispatching_base_num VARCHAR(max),
-    pickup_datetime VARCHAR(max),
+    pickup_datetime TIMESTAMP,
     pu_location_id VARCHAR(max)
   )
   FROM (
@@ -15,10 +15,9 @@ LOAD TABLE nyc_taxi.nyc_taxi_trips_fhv
     max_bad_rows '-1' );
 
 LOAD TABLE nyc_taxi.nyc_taxi_trips_fhv
-  -- "Pickup_DateTime","DropOff_datetime","PUlocationID","DOlocationID","SR_Flag","Dispatching_base_number","Dispatching_base_num"
   SOURCE FIELDS (
-    pickup_datetime VARCHAR(max),
-    dropoff_datetime VARCHAR(max),
+    pickup_datetime TIMESTAMP,
+    dropoff_datetime TIMESTAMP,
     pu_location_id VARCHAR(max),
     do_location_id VARCHAR(max),
     sr_flag VARCHAR(max),
