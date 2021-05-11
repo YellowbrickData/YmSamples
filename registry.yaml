@@ -92,9 +92,9 @@ actions:
 - name: Load Mentions
   scripts:
   - gdelt/gdelt-v2-mentions-all.sql
-- name: Load GKG
-  scripts:
-  - gdelt/gdelt-gkg-all.sql
+# - name: Load GKG
+#   scripts:
+#   - gdelt/gdelt-gkg-all.sql
 author: Yellowbrick Staff
 files:
 - dir: gdelt/queries
