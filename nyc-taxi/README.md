@@ -35,4 +35,4 @@ FROM nyc_taxi.nyc_taxi_trips_green
 
 ```
 
-**Note:** some sample queries were inspired by this great blog article for taxi trip analysis: https://tech.marksblogg.com/omnisci-macos-macbookpro-mbp.html...thanks!
+**Note:** some sample queries were inspired by this great blog article for taxi trip analysis: https://tech.marksblogg.com/omnisci-macos-macbookpro-mbp.html ...thanks!
