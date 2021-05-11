@@ -1,8 +1,6 @@
 # NOAA GHCN-D
 
-This dataset contains weather observations for over 200 years of a large number
-of land-based weather measurement stations, with data provided by Amazon
-from the [Registry of Open Data on AWS (RODA)](https://registry.opendata.aws/noaa-ghcn/);
+This data set contains over 200 years of weather observations collected from a large number of land-based weather stations. The source files are provided by the [Registry of Open Data on AWS (RODA)](https://registry.opendata.aws/noaa-ghcn/).
 
 ### Source
 
@@ -11,10 +9,10 @@ from the [Registry of Open Data on AWS (RODA)](https://registry.opendata.aws/noa
 
 ### Tables
 
- 1. **noaa_ghcn_pds.observations** Weather observations
- 2. **noaa_ghcn_pds.stations** Weather stations
- 3. **noaa_ghcn_pds.countries** Country locations for weather stations
- 4. **noaa_ghcn_pds.states** State locations for weather stations
+ 1. **noaa_ghcn_pds.observations**: Weather observations
+ 2. **noaa_ghcn_pds.stations**: Weather stations
+ 3. **noaa_ghcn_pds.countries**: Country locations for weather stations
+ 4. **noaa_ghcn_pds.states**: State locations for weather stations
 
 
 ### References
@@ -23,8 +21,7 @@ from the [Registry of Open Data on AWS (RODA)](https://registry.opendata.aws/noa
 
 ### Samples
 
-Here is a sample query that shows the days it snowed in virginia during the
-last year by different observation points.
+Here is a sample query that shows the days it snowed in Virginia during the last year, as recorded at different observation points:
 
 ``` sql
 select s.name, o.year_date, count(*)
@@ -39,8 +36,7 @@ group by 1, 2
 order by 1, 2
 ```
 
-Another sample, inspired and derived from this [blog article](https://medium.com/google-cloud/explore-visualize-200-years-of-global-temperature-using-apache-spark-bigquery-and-google-data-699ed8b3c67),
-showing the warmest days for each state for 2020:
+The following sample, inspired and derived from this [blog article](https://medium.com/google-cloud/explore-visualize-200-years-of-global-temperature-using-apache-spark-bigquery-and-google-data-699ed8b3c67) shows the warmest days for each state in 2020:
 
 ``` sql
 SELECT station_id, (((max_temp::float / 10) * 9 ) / 5) + 32 as max_temp_f, year_date, state, station_name

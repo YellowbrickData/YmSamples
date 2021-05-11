@@ -54,10 +54,9 @@ schema: tpcds_sf1000
 name: NOAA Global Historical Climatology Network Daily (GHCN-D)
 id: noaa-ghcn-pds
 icon: noaa-ghcn-pds/icon.svg
-description: '**NOAA GHCN-D**: NOAA Global Historical Climatology Network Daily (GHCN-D) contains over
-  3 billion rows of weather observations from 200 years of land-based weather measurement stations.
-  Load this sample in minutes to analyze and explore years of temperature, precipitation and other
-  valuable meterological measurements across a massive dataset.'
+description: '**NOAA GHCN-D**: NOAA Global Historical Climatology Network Daily (GHCN-D) contains 3 billion rows of observations collected over 200 years from a large number of land-based weather stations.
+  Load this sample in minutes to analyze and explore years of temperature, precipitation, and other
+  valuable meteorological measurements across a massive data set.'
 actions:
 - name: Setup
   script: noaa-ghcn-pds/noaa-ghcn-pds-setup.sql
