@@ -9,7 +9,6 @@ This small data set contains 5 tables with actual scores from English Premier Le
 ### Scripts
 
 * `premdb_testdrive.ddl`: creates and loads five premdb tables
-* `premdb_external_objects.ddl`: creates an external storage, an external format, and an external location
 * `newmatchstats.ddl`: creates the newmatchstats table
 * `queries/*.sql`: a few queries that you can run
 * 
