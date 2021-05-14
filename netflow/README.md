@@ -1,4 +1,4 @@
-# NETFLOW UGR16D
+# NETFLOW UGR16
 
 This is a sample dataset, containing several billion rows of NetFlow data.  NetFlow is a service that sits on network routers and collects information on IP traffic as it enters or exits an interface.  It collects things like the source and destination addresses, ports, protocols, and the amount of data transmitted.  By analyzing the data provided by NetFlow, a network administrator can generate a summary of network activity, find sources of network congestions, and identify potential security threats.
 
