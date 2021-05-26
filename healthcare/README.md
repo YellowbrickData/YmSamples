@@ -47,7 +47,11 @@ by a data warehouse.
  https://synthetichealth.github.io/synthea/
 
 ### Samples
+  
+  Count the number of patients with each type of allergy.
 
-  Here is a sample query that lists the top 100 destination IPs for SSH traffic. 
-
+  select code, description, count(*) as num_patients 
+  from healthcare.allergies 
+  group by code, description 
+  order by num_patients desc;
 
