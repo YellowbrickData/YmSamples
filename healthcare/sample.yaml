@@ -1,0 +1,21 @@
+name: Healthcare Sample Dataset
+id: healthcare
+icon: healthcare/icon.svg
+description: |-
+  **Source**: https://synthetichealth.github.io/synthea/
+  This is a set of randomly generated healthcare records, stored in FHIR v4 
+  format.  FHIR (Fast Healthcare Interoperability Resources) is an emerging 
+  standard for exchanging health care records electronically, while maintaining 
+  HIPAA compliance. 
+actions:
+- name: Setup/Load 
+  script: healthcare/setup.sql
+author: Yellowbrick Staff
+files:
+- dir: healthcare
+  include: sql|ddl
+- dir: netflow/queries
+  include: sql|ddl
+size: 
+database: yellowbrick_trial
+schema: healthcare
