@@ -34,4 +34,4 @@ CREATE TABLE netflow.protocols (
 
 LOAD TABLE "netflow"."protocols" FROM ('/netflow/protocols') EXTERNAL LOCATION "netflow"."netflow_location" EXTERNAL FORMAT "netflow"."netflow_format";
 
-LOAD TABLE "netflow"."netflow" FROM ('/netflow/netflow_1.csv.gz') EXTERNAL LOCATION "netflow"."netflow_location" EXTERNAL FORMAT "netflow"."netflow_format" WITH (num_readers '20', read_sources_concurrently 'ALWAYS', max_bad_rows '100');
+LOAD TABLE "netflow"."netflow" FROM ('/netflow/netflow2') EXTERNAL LOCATION "netflow"."netflow_location" EXTERNAL FORMAT "netflow"."netflow_format" WITH (num_readers '20', read_sources_concurrently 'ALWAYS', max_bad_rows '100');
