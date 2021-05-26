@@ -1,8 +1,8 @@
 # NETFLOW UGR16
 
-This is a sample dataset, containing several billion rows of NetFlow data.  NetFlow is a service that sits on network routers and collects information on IP traffic as it enters or exits an interface.  It collects things like the source and destination addresses, ports, protocols, and the amount of data transmitted.  By analyzing the data provided by NetFlow, a network administrator can generate a summary of network activity, find sources of network congestions, and identify potential security threats.
+This is a sample dataset, containing 500 million rows of NetFlow data.  NetFlow is a service that sits on network routers and collects information on IP traffic as it enters or exits an interface.  It collects things like the source and destination addresses, ports, protocols, and the amount of data transmitted.  By analyzing the data provided by NetFlow, a network administrator can generate a summary of network activity, find sources of network congestions, and identify potential security threats.
 
-This particular collection is called UGR16.   It was built with real network traffic and contains roughly 6 months of NetFlow data from an ISP in Spain.  It was collected and published the University of Granada (UGR) Network Engineering department.
+This is a subset of the UGR16 dataset.   It was built using real network traffic from an ISP in Spain.  It was collected and published the University of Granada (UGR) Network Engineering department.
 
 
 ### Source
@@ -23,7 +23,7 @@ This particular collection is called UGR16.   It was built with real network tra
 
   Here is a sample query that lists the top 100 destination IPs for SSH traffic. 
 
-  select source_ip, count(*) as packet_count 
+  select source_ip::varchar, count(*) as packet_count 
   from netflow.netflow
   where destination_port=22 
   group by source_ip 
