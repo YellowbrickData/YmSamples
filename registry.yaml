@@ -191,7 +191,7 @@ files:
   include: sql|ddl
 - dir: netflow/queries
   include: sql|ddl
-size: 
+size: 256500000000 
 database: yellowbrick_trial
 schema: healthcare
 
