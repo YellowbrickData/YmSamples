@@ -4,7 +4,7 @@ id: netflow
 icon: netflow/icon.svg
 description: |-
   **Source**: https://nesg.ugr.es/nesg-ugr16/
-  This is a sample dataset, containing several billion rows of NetFlow data. NetFlow
+  This is a sample dataset, containing several million rows of NetFlow data. NetFlow
   is a service that sits on network routers and collects information on IP traffic
   as it enters or exits an interface. This particutlar dataset is called UGR16.
 actions:
