@@ -11,7 +11,7 @@ This small data set contains 5 tables with actual scores from English Premier Le
 * `premdb_testdrive.ddl`: creates and loads five premdb tables
 * `newmatchstats.ddl`: creates the newmatchstats table
 * `queries/*.sql`: a few queries that you can run
-* 
+
 ### Tables
 
  1. **match:** Full-time and half-time scores for matches with foreign keys for the season, home team, and away team values
