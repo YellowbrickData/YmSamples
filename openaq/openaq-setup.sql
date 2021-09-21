@@ -22,13 +22,13 @@ CREATE TABLE openaq.measurements(
 DISTRIBUTE RANDOM;
 GRANT ALL ON TABLE openaq.measurements TO public;
 
-CREATE EXTERNAL STORAGE openaq.openaq_storage
+CREATE EXTERNAL STORAGE openaq_storage
   TYPE s3
   ENDPOINT 'https://s3.us-east-1.amazonaws.com/'
   REGION 'us-east-1';
-GRANT ALL ON EXTERNAL STORAGE openaq.openaq_storage TO public;
+GRANT ALL ON EXTERNAL STORAGE openaq_storage TO public;
 
-CREATE EXTERNAL FORMAT openaq.openaq_format
+CREATE EXTERNAL FORMAT openaq_format
   TYPE csv
   WITH (
       delimiter ','
@@ -40,10 +40,10 @@ CREATE EXTERNAL FORMAT openaq.openaq_format
     , on_extra_field 'REMOVE'
     , on_string_too_long 'TRUNCATE'
   );
-GRANT ALL ON EXTERNAL FORMAT openaq.openaq_format TO public;
+GRANT ALL ON EXTERNAL FORMAT openaq_format TO public;
 
-CREATE EXTERNAL LOCATION openaq.openaq_location
+CREATE EXTERNAL LOCATION openaq_location
   PATH 'openaq-fetches'
-  EXTERNAL STORAGE openaq.openaq_storage
-  EXTERNAL FORMAT openaq.openaq_format;
-GRANT ALL ON EXTERNAL LOCATION openaq.openaq_location TO public;
+  EXTERNAL STORAGE openaq_storage
+  EXTERNAL FORMAT openaq_format;
+GRANT ALL ON EXTERNAL LOCATION openaq_location TO public;

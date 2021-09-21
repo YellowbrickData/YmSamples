@@ -48,13 +48,13 @@ CREATE TABLE noaa_ghcn_pds.states(
 DISTRIBUTE REPLICATE;
 GRANT ALL ON TABLE noaa_ghcn_pds.states TO public;
 
-CREATE EXTERNAL STORAGE noaa_ghcn_pds.noaa_ghcn_pds_storage
+CREATE EXTERNAL STORAGE noaa_ghcn_pds_storage
   TYPE s3
   ENDPOINT 'https://s3.us-east-1.amazonaws.com/'
   REGION 'us-east-1';
-GRANT ALL ON EXTERNAL STORAGE noaa_ghcn_pds.noaa_ghcn_pds_storage TO public;
+GRANT ALL ON EXTERNAL STORAGE noaa_ghcn_pds_storage TO public;
 
-CREATE EXTERNAL FORMAT noaa_ghcn_pds.noaa_ghcn_pds_format
+CREATE EXTERNAL FORMAT noaa_ghcn_pds_format
   TYPE csv
   WITH (
       delimiter ','
@@ -65,10 +65,10 @@ CREATE EXTERNAL FORMAT noaa_ghcn_pds.noaa_ghcn_pds_format
     , on_extra_field 'REMOVE'
     , on_string_too_long 'TRUNCATE'
   );
-GRANT ALL ON EXTERNAL FORMAT noaa_ghcn_pds.noaa_ghcn_pds_format TO public;
+GRANT ALL ON EXTERNAL FORMAT noaa_ghcn_pds_format TO public;
 
-CREATE EXTERNAL LOCATION noaa_ghcn_pds.noaa_ghcn_pds_location
+CREATE EXTERNAL LOCATION noaa_ghcn_pds_location
   PATH 'noaa-ghcn-pds'
-  EXTERNAL STORAGE noaa_ghcn_pds.noaa_ghcn_pds_storage
-  EXTERNAL FORMAT noaa_ghcn_pds.noaa_ghcn_pds_format;
-GRANT ALL ON EXTERNAL LOCATION noaa_ghcn_pds.noaa_ghcn_pds_location TO public;
+  EXTERNAL STORAGE noaa_ghcn_pds_storage
+  EXTERNAL FORMAT noaa_ghcn_pds_format;
+GRANT ALL ON EXTERNAL LOCATION noaa_ghcn_pds_location TO public;

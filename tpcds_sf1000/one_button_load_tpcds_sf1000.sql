@@ -1,13 +1,13 @@
 CREATE SCHEMA IF NOT EXISTS "tpcds_sf1000";
 GRANT ALL ON SCHEMA "tpcds_sf1000" TO public;
 
-CREATE EXTERNAL STORAGE "tpcds_sf1000"."sample_tpcds_qa_es" TYPE S3 ENDPOINT 'https://s3.us-west-2.amazonaws.com/' REGION 'us-west-2' IDENTITY '' CREDENTIAL '';
-CREATE EXTERNAL FORMAT IF NOT EXISTS "tpcds_sf1000"."sample_tpcds_qa_ef" TYPE CSV WITH (DELIMITER '|', ON_MISSING_FIELD 'SUPPLYNULL', ON_EXTRA_FIELD 'REMOVE');
-CREATE EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" PATH 'yb-sampledata-d4f1c23ea7' EXTERNAL STORAGE "tpcds_sf1000"."sample_tpcds_qa_es" EXTERNAL FORMAT "tpcds_sf1000"."sample_tpcds_qa_ef";
+CREATE EXTERNAL STORAGE "sample_tpcds_qa_es" TYPE S3 ENDPOINT 'https://s3.us-west-2.amazonaws.com/' REGION 'us-west-2' IDENTITY '' CREDENTIAL '';
+CREATE EXTERNAL FORMAT IF NOT EXISTS "sample_tpcds_qa_ef" TYPE CSV WITH (DELIMITER '|', ON_MISSING_FIELD 'SUPPLYNULL', ON_EXTRA_FIELD 'REMOVE');
+CREATE EXTERNAL LOCATION "sample_tpcds_qa_el" PATH 'yb-sampledata-d4f1c23ea7' EXTERNAL STORAGE "sample_tpcds_qa_es" EXTERNAL FORMAT "sample_tpcds_qa_ef";
 
-GRANT ALL ON EXTERNAL STORAGE "tpcds_sf1000"."sample_tpcds_qa_es" TO public;
-GRANT ALL ON EXTERNAL FORMAT "tpcds_sf1000"."sample_tpcds_qa_ef" TO public;
-GRANT ALL ON EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" TO public;
+GRANT ALL ON EXTERNAL STORAGE "sample_tpcds_qa_es" TO public;
+GRANT ALL ON EXTERNAL FORMAT "sample_tpcds_qa_ef" TO public;
+GRANT ALL ON EXTERNAL LOCATION "sample_tpcds_qa_el" TO public;
 
 CREATE TABLE "tpcds_sf1000"."call_center"
 (
@@ -556,28 +556,28 @@ CREATE TABLE "tpcds_sf1000"."web_site"
 
 GRANT SELECT ON ALL TABLES IN SCHEMA "tpcds_sf1000" TO public;
 
-LOAD TABLE "tpcds_sf1000"."call_center" FROM ('tpcds-sf1000/call_center/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."catalog_page" FROM ('tpcds-sf1000/catalog_page/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."catalog_returns" FROM ('tpcds-sf1000/catalog_returns/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."catalog_sales" FROM ('tpcds-sf1000/catalog_sales/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."customer" FROM ('tpcds-sf1000/customer/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."customer_address" FROM ('tpcds-sf1000/customer_address/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."customer_demographics" FROM ('tpcds-sf1000/customer_demographics/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."date_dim" FROM ('tpcds-sf1000/date_dim/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."household_demographics" FROM ('tpcds-sf1000/household_demographics/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."income_band" FROM ('tpcds-sf1000/income_band/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."inventory" FROM ('tpcds-sf1000/inventory/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."item" FROM ('tpcds-sf1000/item/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."promotion" FROM ('tpcds-sf1000/promotion/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."reason" FROM ('tpcds-sf1000/reason/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."ship_mode" FROM ('tpcds-sf1000/ship_mode/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."store" FROM ('tpcds-sf1000/store/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."store_returns" FROM ('tpcds-sf1000/store_returns/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."store_sales" FROM ('tpcds-sf1000/store_sales/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."time_dim" FROM ('tpcds-sf1000/time_dim/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."warehouse" FROM ('tpcds-sf1000/warehouse/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."web_page" FROM ('tpcds-sf1000/web_page/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."web_returns" FROM ('tpcds-sf1000/web_returns/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."web_sales" FROM ('tpcds-sf1000/web_sales/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
-LOAD TABLE "tpcds_sf1000"."web_site" FROM ('tpcds-sf1000/web_site/') EXTERNAL LOCATION "tpcds_sf1000"."sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."call_center" FROM ('tpcds-sf1000/call_center/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."catalog_page" FROM ('tpcds-sf1000/catalog_page/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."catalog_returns" FROM ('tpcds-sf1000/catalog_returns/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."catalog_sales" FROM ('tpcds-sf1000/catalog_sales/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."customer" FROM ('tpcds-sf1000/customer/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."customer_address" FROM ('tpcds-sf1000/customer_address/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."customer_demographics" FROM ('tpcds-sf1000/customer_demographics/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."date_dim" FROM ('tpcds-sf1000/date_dim/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."household_demographics" FROM ('tpcds-sf1000/household_demographics/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."income_band" FROM ('tpcds-sf1000/income_band/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."inventory" FROM ('tpcds-sf1000/inventory/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."item" FROM ('tpcds-sf1000/item/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."promotion" FROM ('tpcds-sf1000/promotion/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."reason" FROM ('tpcds-sf1000/reason/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."ship_mode" FROM ('tpcds-sf1000/ship_mode/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."store" FROM ('tpcds-sf1000/store/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."store_returns" FROM ('tpcds-sf1000/store_returns/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."store_sales" FROM ('tpcds-sf1000/store_sales/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."time_dim" FROM ('tpcds-sf1000/time_dim/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."warehouse" FROM ('tpcds-sf1000/warehouse/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."web_page" FROM ('tpcds-sf1000/web_page/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."web_returns" FROM ('tpcds-sf1000/web_returns/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."web_sales" FROM ('tpcds-sf1000/web_sales/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "tpcds_sf1000"."web_site" FROM ('tpcds-sf1000/web_site/') EXTERNAL LOCATION "sample_tpcds_qa_el" WITH (num_readers '30', read_sources_concurrently 'ALWAYS');
 

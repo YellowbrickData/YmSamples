@@ -4,11 +4,11 @@ CREATE SCHEMA IF NOT EXISTS "netflow";
 GRANT ALL ON SCHEMA "netflow" TO public;
 SET SEARCH_PATH TO "netflow";
 
-CREATE EXTERNAL STORAGE "netflow"."netflow_storage" TYPE s3 ENDPOINT 'https://s3.amazonaws.com' REGION 'us-east-1';
+CREATE EXTERNAL STORAGE "netflow_storage" TYPE s3 ENDPOINT 'https://s3.amazonaws.com' REGION 'us-east-1';
 
-CREATE EXTERNAL FORMAT "netflow"."netflow_format" TYPE csv;
+CREATE EXTERNAL FORMAT "netflow_format" TYPE csv;
 
-CREATE EXTERNAL LOCATION "netflow"."netflow_location" PATH 'yb-sampledata-d4f1c23ea7' EXTERNAL STORAGE "netflow"."netflow_storage" EXTERNAL FORMAT "netflow"."netflow_format";
+CREATE EXTERNAL LOCATION "netflow_location" PATH 'yb-sampledata-d4f1c23ea7' EXTERNAL STORAGE "netflow_storage" EXTERNAL FORMAT "netflow_format";
 
 CREATE TABLE netflow.netflow (
     "timestamp" timestamp without time zone,
@@ -32,6 +32,6 @@ CREATE TABLE netflow.protocols (
     transport character varying(6)
 ) DISTRIBUTE REPLICATE ;
 
-LOAD TABLE "netflow"."protocols" FROM ('/netflow/protocols') EXTERNAL LOCATION "netflow"."netflow_location" EXTERNAL FORMAT "netflow"."netflow_format";
+LOAD TABLE "netflow"."protocols" FROM ('/netflow/protocols') EXTERNAL LOCATION "netflow_location" EXTERNAL FORMAT "netflow_format";
 
-LOAD TABLE "netflow"."netflow" FROM ('/netflow/netflow2') EXTERNAL LOCATION "netflow"."netflow_location" EXTERNAL FORMAT "netflow"."netflow_format" WITH (num_readers '20', read_sources_concurrently 'ALWAYS', max_bad_rows '100');
+LOAD TABLE "netflow"."netflow" FROM ('/netflow/netflow2') EXTERNAL LOCATION "netflow_location" EXTERNAL FORMAT "netflow_format" WITH (num_readers '20', read_sources_concurrently 'ALWAYS', max_bad_rows '100');

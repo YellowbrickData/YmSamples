@@ -8,7 +8,7 @@ LOAD TABLE nyc_taxi.nyc_taxi_trips_fhv
     '/trip data/fhv_tripdata_2015',
     '/trip data/fhv_tripdata_2016'
   )
-  EXTERNAL LOCATION nyc_taxi.nyc_taxi_location
+  EXTERNAL LOCATION nyc_taxi_location
   WITH (
     num_readers '30',
     read_sources_concurrently 'ALWAYS',
@@ -26,7 +26,7 @@ LOAD TABLE nyc_taxi.nyc_taxi_trips_fhv
   FROM (
     '/trip data/fhv_tripdata_2018'
   )
-  EXTERNAL LOCATION nyc_taxi.nyc_taxi_location
+  EXTERNAL LOCATION nyc_taxi_location
   WITH (
     num_readers '30',
     read_sources_concurrently 'ALWAYS',
@@ -38,7 +38,7 @@ LOAD TABLE nyc_taxi.nyc_taxi_trips_fhv
     '/trip data/fhv_tripdata_2019',
     '/trip data/fhv_tripdata_202'
   )
-  EXTERNAL LOCATION nyc_taxi.nyc_taxi_location
+  EXTERNAL LOCATION nyc_taxi_location
   WITH (
     num_readers '30',
     read_sources_concurrently 'ALWAYS',

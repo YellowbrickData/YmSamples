@@ -121,13 +121,13 @@ AS
 ;
 GRANT ALL ON VIEW nyc_taxi.trips TO public;
 
-CREATE EXTERNAL STORAGE nyc_taxi.nyc_taxi_storage
+CREATE EXTERNAL STORAGE nyc_taxi_storage
   TYPE s3
   ENDPOINT 'https://s3.us-east-1.amazonaws.com/'
   REGION 'us-east-1';
-GRANT ALL ON EXTERNAL STORAGE nyc_taxi.nyc_taxi_storage TO public;
+GRANT ALL ON EXTERNAL STORAGE nyc_taxi_storage TO public;
 
-CREATE EXTERNAL FORMAT nyc_taxi.nyc_taxi_format
+CREATE EXTERNAL FORMAT nyc_taxi_format
   TYPE csv
   WITH (
       delimiter ','
@@ -136,9 +136,9 @@ CREATE EXTERNAL FORMAT nyc_taxi.nyc_taxi_format
     , on_extra_field 'REMOVE'
     , on_string_too_long 'TRUNCATE'
   );
-GRANT ALL ON EXTERNAL FORMAT nyc_taxi.nyc_taxi_format TO public;
+GRANT ALL ON EXTERNAL FORMAT nyc_taxi_format TO public;
 
-CREATE EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_green_yellow_format
+CREATE EXTERNAL FORMAT nyc_taxi_trips_green_yellow_format
   TYPE csv
   WITH (
       delimiter ','
@@ -149,11 +149,11 @@ CREATE EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_green_yellow_format
     , on_missing_field 'SUPPLYNULL'
     , skip_blank_lines 'true'
   );
-GRANT ALL ON EXTERNAL FORMAT nyc_taxi.nyc_taxi_trips_green_yellow_format TO public;
+GRANT ALL ON EXTERNAL FORMAT nyc_taxi_trips_green_yellow_format TO public;
 
-CREATE EXTERNAL LOCATION nyc_taxi.nyc_taxi_location
+CREATE EXTERNAL LOCATION nyc_taxi_location
   PATH 'nyc-tlc'
-  EXTERNAL STORAGE nyc_taxi.nyc_taxi_storage
-  EXTERNAL FORMAT nyc_taxi.nyc_taxi_format;
-GRANT ALL ON EXTERNAL LOCATION nyc_taxi.nyc_taxi_location TO public;
+  EXTERNAL STORAGE nyc_taxi_storage
+  EXTERNAL FORMAT nyc_taxi_format;
+GRANT ALL ON EXTERNAL LOCATION nyc_taxi_location TO public;
 

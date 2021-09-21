@@ -2,11 +2,11 @@ CREATE SCHEMA IF NOT EXISTS "healthcare";
 GRANT ALL ON SCHEMA "healthcare" TO public;
 SET SEARCH_PATH TO "healthcare";
 
-CREATE EXTERNAL STORAGE "healthcare"."healthcare_storage" TYPE s3 ENDPOINT 'https://s3.amazonaws.com' REGION 'us-east-1';
+CREATE EXTERNAL STORAGE "healthcare_storage" TYPE s3 ENDPOINT 'https://s3.amazonaws.com' REGION 'us-east-1';
 
-CREATE EXTERNAL FORMAT "healthcare"."healthcare_format" TYPE csv;
+CREATE EXTERNAL FORMAT "healthcare_format" TYPE csv;
 
-CREATE EXTERNAL LOCATION "healthcare"."healthcare_location" PATH 'yb-sampledata-d4f1c23ea7' EXTERNAL STORAGE "healthcare"."healthcare_storage" EXTERNAL FORMAT "healthcare"."healthcare_format";
+CREATE EXTERNAL LOCATION "healthcare_location" PATH 'yb-sampledata-d4f1c23ea7' EXTERNAL STORAGE "healthcare_storage" EXTERNAL FORMAT "healthcare_format";
 
 CREATE TABLE healthcare.patients (
     id uuid NOT NULL,
@@ -278,35 +278,35 @@ CREATE TABLE healthcare.supplies (
 DISTRIBUTE ON (patient);
 
 
-LOAD TABLE "healthcare"."allergies" FROM ('/healthcare/allergies') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."allergies" FROM ('/healthcare/allergies') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."careplans" FROM ('/healthcare/careplans') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."careplans" FROM ('/healthcare/careplans') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."conditions" FROM ('/healthcare/conditions') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."conditions" FROM ('/healthcare/conditions') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."devices" FROM ('/healthcare/devices') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."devices" FROM ('/healthcare/devices') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."encounters" FROM ('/healthcare/encounters') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."encounters" FROM ('/healthcare/encounters') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."imaging_studies" FROM ('/healthcare/imaging_studies') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."imaging_studies" FROM ('/healthcare/imaging_studies') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."immunizations" FROM ('/healthcare/immunizations') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."immunizations" FROM ('/healthcare/immunizations') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."medications" FROM ('/healthcare/medications') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."medications" FROM ('/healthcare/medications') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."observations" FROM ('/healthcare/observations') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."observations" FROM ('/healthcare/observations') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."organizations" FROM ('/healthcare/organizations') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."organizations" FROM ('/healthcare/organizations') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."patients" FROM ('/healthcare/patients') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."patients" FROM ('/healthcare/patients') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."payer_transitions" FROM ('/healthcare/payer_transitions') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."payer_transitions" FROM ('/healthcare/payer_transitions') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."payers" FROM ('/healthcare/payers') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."payers" FROM ('/healthcare/payers') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."procedures" FROM ('/healthcare/procedures') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."procedures" FROM ('/healthcare/procedures') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."providers" FROM ('/healthcare/providers') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."providers" FROM ('/healthcare/providers') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 
-LOAD TABLE "healthcare"."supplies" FROM ('/healthcare/supplies') EXTERNAL LOCATION "healthcare"."healthcare_location" EXTERNAL FORMAT "healthcare"."healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
+LOAD TABLE "healthcare"."supplies" FROM ('/healthcare/supplies') EXTERNAL LOCATION "healthcare_location" EXTERNAL FORMAT "healthcare_format" WITH (max_bad_rows '100', num_readers '30', read_sources_concurrently 'ALWAYS');
 

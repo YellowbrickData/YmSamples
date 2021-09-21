@@ -870,13 +870,13 @@ INSERT INTO gdelt.countries VALUES
 YFLUSH gdelt.countries;
 
 -- Setup EXTERNAL objects
-CREATE EXTERNAL STORAGE gdelt.gdelt_storage
+CREATE EXTERNAL STORAGE gdelt_storage
   TYPE s3
   ENDPOINT 'https://s3.us-east-1.amazonaws.com/'
   REGION 'us-east-1';
-GRANT ALL ON EXTERNAL STORAGE gdelt.gdelt_storage TO public;
+GRANT ALL ON EXTERNAL STORAGE gdelt_storage TO public;
 
-CREATE EXTERNAL FORMAT gdelt.gdelt_format
+CREATE EXTERNAL FORMAT gdelt_format
   TYPE text
   WITH (
       delimiter '\t'
@@ -887,10 +887,10 @@ CREATE EXTERNAL FORMAT gdelt.gdelt_format
     , on_extra_field 'REMOVE'
     , on_string_too_long 'TRUNCATE'
   );
-GRANT ALL ON EXTERNAL FORMAT gdelt.gdelt_format TO public;
+GRANT ALL ON EXTERNAL FORMAT gdelt_format TO public;
 
-CREATE EXTERNAL LOCATION gdelt.gdelt_location
+CREATE EXTERNAL LOCATION gdelt_location
   PATH 'gdelt-open-data'
-  EXTERNAL STORAGE gdelt.gdelt_storage
-  EXTERNAL FORMAT gdelt.gdelt_format;
-GRANT ALL ON EXTERNAL LOCATION gdelt.gdelt_location TO public;
+  EXTERNAL STORAGE gdelt_storage
+  EXTERNAL FORMAT gdelt_format;
+GRANT ALL ON EXTERNAL LOCATION gdelt_location TO public;
