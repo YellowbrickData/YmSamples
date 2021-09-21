@@ -22,3 +22,11 @@ For example, to quickly build, load, and query the premdb tables:
 # Contributing
 
 Yellowbrick Data welcomes contributions for sample data sets.   Please see our doc on [contributing](CONTRIBUTING.md) for more details.
+
+# Branch strategy
+
+branch     purpose
+########   #######
+master     initial release of sample catalog
+release-1  initial release of sample catalog
+release-2  release of sample catalog without schema elements for EXTERNAL LOCATION, STORAGE and FORMAT
