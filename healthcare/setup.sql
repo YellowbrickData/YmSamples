@@ -2,10 +2,13 @@ CREATE SCHEMA IF NOT EXISTS "healthcare";
 GRANT ALL ON SCHEMA "healthcare" TO public;
 SET SEARCH_PATH TO "healthcare";
 
+DROP EXTERNAL STORAGE IF EXISTS "healthcare_storage" CASCADE;
 CREATE EXTERNAL STORAGE "healthcare_storage" TYPE s3 ENDPOINT 'https://s3.amazonaws.com' REGION 'us-east-1';
 
+DROP EXTERNAL FORMAT IF EXISTS "healthcare_format";
 CREATE EXTERNAL FORMAT "healthcare_format" TYPE csv;
 
+DROP EXTERNAL FORMAT IF EXISTS "healthcare_location";
 CREATE EXTERNAL LOCATION "healthcare_location" PATH 'yb-sampledata-d4f1c23ea7' EXTERNAL STORAGE "healthcare_storage" EXTERNAL FORMAT "healthcare_format";
 
 CREATE TABLE healthcare.patients (

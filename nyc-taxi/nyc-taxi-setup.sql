@@ -120,13 +120,14 @@ AS
   FROM nyc_taxi.nyc_taxi_trips_yellow
 ;
 GRANT ALL ON VIEW nyc_taxi.trips TO public;
-
+DROP EXTERNAL STORAGE IF EXISTS nyc_taxi_storage CASCADE;
 CREATE EXTERNAL STORAGE nyc_taxi_storage
   TYPE s3
   ENDPOINT 'https://s3.us-east-1.amazonaws.com/'
   REGION 'us-east-1';
 GRANT ALL ON EXTERNAL STORAGE nyc_taxi_storage TO public;
 
+DROP EXTERNAL FORMAT IF EXISTS nyc_taxi_format;
 CREATE EXTERNAL FORMAT nyc_taxi_format
   TYPE csv
   WITH (
@@ -138,6 +139,7 @@ CREATE EXTERNAL FORMAT nyc_taxi_format
   );
 GRANT ALL ON EXTERNAL FORMAT nyc_taxi_format TO public;
 
+DROP EXTERNAL FORMAT IF EXISTS nyc_taxi_trips_green_yellow_format;
 CREATE EXTERNAL FORMAT nyc_taxi_trips_green_yellow_format
   TYPE csv
   WITH (
@@ -151,6 +153,7 @@ CREATE EXTERNAL FORMAT nyc_taxi_trips_green_yellow_format
   );
 GRANT ALL ON EXTERNAL FORMAT nyc_taxi_trips_green_yellow_format TO public;
 
+DROP EXTERNAL LOCATION IF EXISTS nyc_taxi_location;
 CREATE EXTERNAL LOCATION nyc_taxi_location
   PATH 'nyc-tlc'
   EXTERNAL STORAGE nyc_taxi_storage

@@ -48,12 +48,14 @@ CREATE TABLE noaa_ghcn_pds.states(
 DISTRIBUTE REPLICATE;
 GRANT ALL ON TABLE noaa_ghcn_pds.states TO public;
 
+DROP EXTERNAL STORAGE IF EXISTS noaa_ghcn_pds_storage CASCADE;
 CREATE EXTERNAL STORAGE noaa_ghcn_pds_storage
   TYPE s3
   ENDPOINT 'https://s3.us-east-1.amazonaws.com/'
   REGION 'us-east-1';
 GRANT ALL ON EXTERNAL STORAGE noaa_ghcn_pds_storage TO public;
 
+DROP EXTERNAL FORMAT IF EXISTS noaa_ghcn_pds_format;
 CREATE EXTERNAL FORMAT noaa_ghcn_pds_format
   TYPE csv
   WITH (
@@ -67,6 +69,7 @@ CREATE EXTERNAL FORMAT noaa_ghcn_pds_format
   );
 GRANT ALL ON EXTERNAL FORMAT noaa_ghcn_pds_format TO public;
 
+DROP EXTERNAL LOCATION IF EXISTS noaa_ghcn_pds_location;
 CREATE EXTERNAL LOCATION noaa_ghcn_pds_location
   PATH 'noaa-ghcn-pds'
   EXTERNAL STORAGE noaa_ghcn_pds_storage

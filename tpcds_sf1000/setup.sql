@@ -2,6 +2,10 @@ CREATE SCHEMA IF NOT EXISTS "tpcds_sf1000";
 GRANT ALL ON SCHEMA "tpcds_sf1000" TO public;
 SET SEARCH_PATH TO "tpcds_sf1000";
 
+DROP EXTERNAL STORAGE IF EXISTS "sample_tpcds_qa_es" CASCADE;
+DROP EXTERNAL FORMAT IF EXISTS "sample_tpcds_qa_ef";
+DROP EXTERNAL LOCATION IF EXISTS "sample_tpcds_qa_el";
+
 CREATE EXTERNAL STORAGE "sample_tpcds_qa_es" TYPE S3 ENDPOINT 'https://s3.us-west-2.amazonaws.com/' REGION 'us-west-2' IDENTITY '' CREDENTIAL '';
 CREATE EXTERNAL FORMAT IF NOT EXISTS "sample_tpcds_qa_ef" TYPE CSV WITH (DELIMITER '|', ON_MISSING_FIELD 'SUPPLYNULL', ON_EXTRA_FIELD 'REMOVE');
 CREATE EXTERNAL LOCATION "sample_tpcds_qa_el" PATH 'yb-sampledata-d4f1c23ea7' EXTERNAL STORAGE "sample_tpcds_qa_es" EXTERNAL FORMAT "sample_tpcds_qa_ef";
