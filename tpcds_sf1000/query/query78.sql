@@ -70,7 +70,7 @@ FROM   ss
                    AND ws_customer_sk = ss_customer_sk ) 
        LEFT JOIN cs 
               ON ( cs_sold_year = ss_sold_year 
-                   AND cs_item_sk = cs_item_sk 
+                   AND cs_item_sk = ss_item_sk 
                    AND cs_customer_sk = ss_customer_sk ) 
 WHERE  COALESCE(ws_qty, 0) > 0 
        AND COALESCE(cs_qty, 0) > 0 
@@ -82,5 +82,5 @@ ORDER  BY ss_item_sk,
           other_chan_qty, 
           other_chan_wholesale_cost, 
           other_chan_sales_price, 
-          Round(ss_qty / ( COALESCE(ws_qty + cs_qty, 1) ), 2)
+          ratio
 LIMIT 100; 
