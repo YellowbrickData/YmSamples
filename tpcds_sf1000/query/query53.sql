@@ -1,46 +1,28 @@
--- query53
-SELECT * 
-FROM   (SELECT i_manufact_id, 
-               Sum(ss_sales_price)             sum_sales, 
-               Avg(Sum(ss_sales_price)) 
-                 OVER ( 
-                   partition BY i_manufact_id) avg_quarterly_sales 
-        FROM   item, 
-               store_sales, 
-               date_dim, 
-               store 
-        WHERE  ss_item_sk = i_item_sk 
-               AND ss_sold_date_sk = d_date_sk 
-               AND ss_store_sk = s_store_sk 
-               AND d_month_seq IN ( 1199, 1199 + 1, 1199 + 2, 1199 + 3, 
-                                    1199 + 4, 1199 + 5, 1199 + 6, 1199 + 7, 
-                                    1199 + 8, 1199 + 9, 1199 + 10, 1199 + 11 ) 
-               AND ( ( i_category IN ( 'Books', 'Children', 'Electronics' ) 
-                       AND i_class IN ( 'personal', 'portable', 'reference', 
-                                        'self-help' ) 
-                       AND i_brand IN ( 'scholaramalgamalg #14', 
-                                        'scholaramalgamalg #7' 
-                                        , 
-                                        'exportiunivamalg #9', 
-                                                       'scholaramalgamalg #9' ) 
-                     ) 
-                      OR ( i_category IN ( 'Women', 'Music', 'Men' ) 
-                           AND i_class IN ( 'accessories', 'classical', 
-                                            'fragrances', 
-                                            'pants' ) 
-                           AND i_brand IN ( 'amalgimporto #1', 
-                                            'edu packscholar #1', 
-                                            'exportiimporto #1', 
-                                                'importoamalg #1' ) ) ) 
-        GROUP  BY i_manufact_id, 
-                  d_qoy) tmp1 
-WHERE  CASE 
-         WHEN avg_quarterly_sales > 0 THEN Abs (sum_sales - avg_quarterly_sales) 
-                                           / 
-                                           avg_quarterly_sales 
-         ELSE NULL 
-       END > 0.1 
-ORDER  BY avg_quarterly_sales, 
-          sum_sales, 
-          i_manufact_id
-LIMIT 100; 
+-- query 53
+-- TPCDS Version 2.13.0
+select  * from 
+(select i_manufact_id,
+sum(ss_sales_price) sum_sales,
+avg(sum(ss_sales_price)) over (partition by i_manufact_id) avg_quarterly_sales
+from item, store_sales, date_dim, store
+where ss_item_sk = i_item_sk and
+ss_sold_date_sk = d_date_sk and
+ss_store_sk = s_store_sk and
+d_month_seq in (1184,1184+1,1184+2,1184+3,1184+4,1184+5,1184+6,1184+7,1184+8,1184+9,1184+10,1184+11) and
+((i_category in ('Books','Children','Electronics') and
+i_class in ('personal','portable','reference','self-help') and
+i_brand in ('scholaramalgamalg #14','scholaramalgamalg #7',
+		'exportiunivamalg #9','scholaramalgamalg #9'))
+or(i_category in ('Women','Music','Men') and
+i_class in ('accessories','classical','fragrances','pants') and
+i_brand in ('amalgimporto #1','edu packscholar #1','exportiimporto #1',
+		'importoamalg #1')))
+group by i_manufact_id, d_qoy ) tmp1
+where case when avg_quarterly_sales > 0 
+	then abs (sum_sales - avg_quarterly_sales)/ avg_quarterly_sales 
+	else null end > 0.1
+order by avg_quarterly_sales,
+	 sum_sales,
+	 i_manufact_id
+limit 100;
+

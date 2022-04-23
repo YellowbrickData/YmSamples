@@ -1,34 +1,31 @@
--- query16
-SELECT
-         Count(DISTINCT cs_order_number) AS order_count ,
-         Sum(cs_ext_ship_cost)           AS total_shipping_cost ,
-         Sum(cs_net_profit)              AS total_net_profit
-FROM     catalog_sales cs1 ,
-         date_dim ,
-         customer_address ,
-         call_center
-WHERE    Cast(d_date AS DATE) BETWEEN Cast('2002-3-01' AS DATE) AND (
-                  Cast('2002-5-01' AS DATE))
-AND      cs1.cs_ship_date_sk = d_date_sk
-AND      cs1.cs_ship_addr_sk = ca_address_sk
-AND      ca_state = 'IA'
-AND      cs1.cs_call_center_sk = cc_call_center_sk
-AND      cc_county IN ('Williamson County',
-                       'Williamson County',
-                       'Williamson County',
-                       'Williamson County',
-                       'Williamson County' )
-AND      EXISTS
-         (
-                SELECT *
-                FROM   catalog_sales cs2
-                WHERE  cs1.cs_order_number = cs2.cs_order_number
-                AND    cs1.cs_warehouse_sk <> cs2.cs_warehouse_sk)
-AND      NOT EXISTS
-         (
-                SELECT *
-                FROM   catalog_returns cr1
-                WHERE  cs1.cs_order_number = cr1.cr_order_number)
-ORDER BY count(DISTINCT cs_order_number)
-LIMIT 100;
+-- query 16
+-- TPCDS Version 2.13.0
+select  
+   count(distinct cs_order_number) as "order count"
+  ,sum(cs_ext_ship_cost) as "total shipping cost"
+  ,sum(cs_net_profit) as "total net profit"
+from
+   catalog_sales cs1
+  ,date_dim
+  ,customer_address
+  ,call_center
+where
+    d_date between '2002-4-01' and 
+           (cast('2002-4-01' as date) + interval '60' day)
+and cs1.cs_ship_date_sk = d_date_sk
+and cs1.cs_ship_addr_sk = ca_address_sk
+and ca_state = 'CO'
+and cs1.cs_call_center_sk = cc_call_center_sk
+and cc_county in ('Walker County','Marshall County','Ziebach County','Daviess County',
+                  'Richland County'
+)
+and exists (select *
+            from catalog_sales cs2
+            where cs1.cs_order_number = cs2.cs_order_number
+              and cs1.cs_warehouse_sk <> cs2.cs_warehouse_sk)
+and not exists(select *
+               from catalog_returns cr1
+               where cs1.cs_order_number = cr1.cr_order_number)
+order by count(distinct cs_order_number)
+limit 100;
 

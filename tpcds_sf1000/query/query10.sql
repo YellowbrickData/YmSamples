@@ -1,4 +1,8 @@
--- start query 1 in stream 0 using template query10a.tpl
+-- query 10
+-- TPCDS Version 2.13.0
+-- Modifications:
+-- Decorrelate multiple exists or statements to a single one with IN list with UNION to avoid `This form of correlated subquery is not supported` YBD error
+
 select  
   cd_gender,
   cd_marital_status,
@@ -18,31 +22,26 @@ select
   customer c,customer_address ca,customer_demographics
  where
   c.c_current_addr_sk = ca.ca_address_sk and
-  ca_county IN ( 'Lycoming County', 'Sheridan County',
-                          'Kandiyohi County',
-                          'Pike County',
-                                           'Greene County' )
-  and
+  ca_county in ('Texas County','Tom Green County','Rockcastle County','Mercer County','Monroe County') and
   cd_demo_sk = c.c_current_cdemo_sk and 
   exists (select *
           from store_sales,date_dim
           where c.c_customer_sk = ss_customer_sk and
                 ss_sold_date_sk = d_date_sk and
-                d_year = 2002 and
-                d_moy between 4 and 4+3) and
-   exists (select *
-          from (
-             select ws_bill_customer_sk as customer_sk, d_year,d_moy
-             from web_sales, date_dim where ws_sold_date_sk = d_date_sk
-              and d_year = 2002 and
-                  d_moy between 4 and 4+3
-             union all
-             select cs_ship_customer_sk as customer_sk, d_year, d_moy
-             from catalog_sales, date_dim where cs_sold_date_sk = d_date_sk
-              and d_year = 2002 and
-                  d_moy between 4 and 4+3
-	     ) x
-            where c.c_customer_sk = customer_sk)
+                d_year = 2001 and
+                d_moy between 2 and 2+3) and
+   (c.c_customer_sk IN  (select ws_bill_customer_sk
+            from web_sales,date_dim
+            where ws_sold_date_sk = d_date_sk and
+                  d_year = 2001 and
+                  d_moy between 2 and 2+3
+        UNION ALL
+        select cs_ship_customer_sk
+            from catalog_sales,date_dim
+            where cs_sold_date_sk = d_date_sk and
+                  d_year = 2001 and
+                  d_moy between 2 and 2+3)
+       )
  group by cd_gender,
           cd_marital_status,
           cd_education_status,
@@ -60,5 +59,4 @@ select
           cd_dep_employed_count,
           cd_dep_college_count
 limit 100;
-
 

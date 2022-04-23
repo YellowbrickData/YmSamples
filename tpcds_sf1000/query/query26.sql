@@ -1,24 +1,21 @@
--- query26
-SELECT i_item_id, 
-               Avg(cs_quantity)    agg1, 
-               Avg(cs_list_price)  agg2, 
-               Avg(cs_coupon_amt)  agg3, 
-               Avg(cs_sales_price) agg4 
-FROM   catalog_sales, 
-       customer_demographics, 
-       date_dim, 
-       item, 
-       promotion 
-WHERE  cs_sold_date_sk = d_date_sk 
-       AND cs_item_sk = i_item_sk 
-       AND cs_bill_cdemo_sk = cd_demo_sk 
-       AND cs_promo_sk = p_promo_sk 
-       AND cd_gender = 'F' 
-       AND cd_marital_status = 'W' 
-       AND cd_education_status = 'Secondary' 
-       AND ( p_channel_email = 'N' 
-              OR p_channel_event = 'N' ) 
-       AND d_year = 2000 
-GROUP  BY i_item_id 
-ORDER  BY i_item_id
-LIMIT 100; 
+-- query 26
+-- TPCDS Version 2.13.0
+select  i_item_id, 
+        avg(cs_quantity) agg1,
+        avg(cs_list_price) agg2,
+        avg(cs_coupon_amt) agg3,
+        avg(cs_sales_price) agg4 
+ from catalog_sales, customer_demographics, date_dim, item, promotion
+ where cs_sold_date_sk = d_date_sk and
+       cs_item_sk = i_item_sk and
+       cs_bill_cdemo_sk = cd_demo_sk and
+       cs_promo_sk = p_promo_sk and
+       cd_gender = 'M' and 
+       cd_marital_status = 'W' and
+       cd_education_status = 'Secondary' and
+       (p_channel_email = 'N' or p_channel_event = 'N') and
+       d_year = 2001 
+ group by i_item_id
+ order by i_item_id
+ limit 100;
+

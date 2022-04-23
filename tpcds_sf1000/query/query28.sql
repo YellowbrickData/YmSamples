@@ -1,51 +1,53 @@
--- query28
-SELECT * 
-FROM   (SELECT Avg(ss_list_price)            B1_LP, 
-               Count(ss_list_price)          B1_CNT, 
-               Count(DISTINCT ss_list_price) B1_CNTD 
-        FROM   store_sales 
-        WHERE  ss_quantity BETWEEN 0 AND 5 
-               AND ( ss_list_price BETWEEN 18 AND 18 + 10 
-                      OR ss_coupon_amt BETWEEN 1939 AND 1939 + 1000 
-                      OR ss_wholesale_cost BETWEEN 34 AND 34 + 20 )) B1, 
-       (SELECT Avg(ss_list_price)            B2_LP, 
-               Count(ss_list_price)          B2_CNT, 
-               Count(DISTINCT ss_list_price) B2_CNTD 
-        FROM   store_sales 
-        WHERE  ss_quantity BETWEEN 6 AND 10 
-               AND ( ss_list_price BETWEEN 1 AND 1 + 10 
-                      OR ss_coupon_amt BETWEEN 35 AND 35 + 1000 
-                      OR ss_wholesale_cost BETWEEN 50 AND 50 + 20 )) B2, 
-       (SELECT Avg(ss_list_price)            B3_LP, 
-               Count(ss_list_price)          B3_CNT, 
-               Count(DISTINCT ss_list_price) B3_CNTD 
-        FROM   store_sales 
-        WHERE  ss_quantity BETWEEN 11 AND 15 
-               AND ( ss_list_price BETWEEN 91 AND 91 + 10 
-                      OR ss_coupon_amt BETWEEN 1412 AND 1412 + 1000 
-                      OR ss_wholesale_cost BETWEEN 17 AND 17 + 20 )) B3, 
-       (SELECT Avg(ss_list_price)            B4_LP, 
-               Count(ss_list_price)          B4_CNT, 
-               Count(DISTINCT ss_list_price) B4_CNTD 
-        FROM   store_sales 
-        WHERE  ss_quantity BETWEEN 16 AND 20 
-               AND ( ss_list_price BETWEEN 9 AND 9 + 10 
-                      OR ss_coupon_amt BETWEEN 5270 AND 5270 + 1000 
-                      OR ss_wholesale_cost BETWEEN 29 AND 29 + 20 )) B4, 
-       (SELECT Avg(ss_list_price)            B5_LP, 
-               Count(ss_list_price)          B5_CNT, 
-               Count(DISTINCT ss_list_price) B5_CNTD 
-        FROM   store_sales 
-        WHERE  ss_quantity BETWEEN 21 AND 25 
-               AND ( ss_list_price BETWEEN 45 AND 45 + 10 
-                      OR ss_coupon_amt BETWEEN 826 AND 826 + 1000 
-                      OR ss_wholesale_cost BETWEEN 5 AND 5 + 20 )) B5, 
-       (SELECT Avg(ss_list_price)            B6_LP, 
-               Count(ss_list_price)          B6_CNT, 
-               Count(DISTINCT ss_list_price) B6_CNTD 
-        FROM   store_sales 
-        WHERE  ss_quantity BETWEEN 26 AND 30 
-               AND ( ss_list_price BETWEEN 174 AND 174 + 10 
-                      OR ss_coupon_amt BETWEEN 5548 AND 5548 + 1000 
-                      OR ss_wholesale_cost BETWEEN 42 AND 42 + 20 )) B6
-LIMIT 100; 
+-- query 28
+-- TPCDS Version 2.13.0
+select  *
+from (select avg(ss_list_price) B1_LP
+            ,count(ss_list_price) B1_CNT
+            ,count(distinct ss_list_price) B1_CNTD
+      from store_sales
+      where ss_quantity between 0 and 5
+        and (ss_list_price between 37 and 37+10 
+             or ss_coupon_amt between 5355 and 5355+1000
+             or ss_wholesale_cost between 21 and 21+20)) B1,
+     (select avg(ss_list_price) B2_LP
+            ,count(ss_list_price) B2_CNT
+            ,count(distinct ss_list_price) B2_CNTD
+      from store_sales
+      where ss_quantity between 6 and 10
+        and (ss_list_price between 31 and 31+10
+          or ss_coupon_amt between 4881 and 4881+1000
+          or ss_wholesale_cost between 58 and 58+20)) B2,
+     (select avg(ss_list_price) B3_LP
+            ,count(ss_list_price) B3_CNT
+            ,count(distinct ss_list_price) B3_CNTD
+      from store_sales
+      where ss_quantity between 11 and 15
+        and (ss_list_price between 75 and 75+10
+          or ss_coupon_amt between 6515 and 6515+1000
+          or ss_wholesale_cost between 28 and 28+20)) B3,
+     (select avg(ss_list_price) B4_LP
+            ,count(ss_list_price) B4_CNT
+            ,count(distinct ss_list_price) B4_CNTD
+      from store_sales
+      where ss_quantity between 16 and 20
+        and (ss_list_price between 39 and 39+10
+          or ss_coupon_amt between 1881 and 1881+1000
+          or ss_wholesale_cost between 25 and 25+20)) B4,
+     (select avg(ss_list_price) B5_LP
+            ,count(ss_list_price) B5_CNT
+            ,count(distinct ss_list_price) B5_CNTD
+      from store_sales
+      where ss_quantity between 21 and 25
+        and (ss_list_price between 84 and 84+10
+          or ss_coupon_amt between 1100 and 1100+1000
+          or ss_wholesale_cost between 64 and 64+20)) B5,
+     (select avg(ss_list_price) B6_LP
+            ,count(ss_list_price) B6_CNT
+            ,count(distinct ss_list_price) B6_CNTD
+      from store_sales
+      where ss_quantity between 26 and 30
+        and (ss_list_price between 24 and 24+10
+          or ss_coupon_amt between 5272 and 5272+1000
+          or ss_wholesale_cost between 30 and 30+20)) B6
+limit 100;
+

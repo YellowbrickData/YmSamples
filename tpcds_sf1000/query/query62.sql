@@ -1,45 +1,35 @@
--- query62
-SELECT Substr(w_warehouse_name, 1, 20), 
-               sm_type, 
-               web_name, 
-               Sum(CASE 
-                     WHEN ( ws_ship_date_sk - ws_sold_date_sk <= 30 ) THEN 1 
-                     ELSE 0 
-                   END) AS days_30, 
-               Sum(CASE 
-                     WHEN ( ws_ship_date_sk - ws_sold_date_sk > 30 ) 
-                          AND ( ws_ship_date_sk - ws_sold_date_sk <= 60 ) THEN 1 
-                     ELSE 0 
-                   END) AS days_31_60, 
-               Sum(CASE 
-                     WHEN ( ws_ship_date_sk - ws_sold_date_sk > 60 ) 
-                          AND ( ws_ship_date_sk - ws_sold_date_sk <= 90 ) THEN 1 
-                     ELSE 0 
-                   END) AS days_61_90, 
-               Sum(CASE 
-                     WHEN ( ws_ship_date_sk - ws_sold_date_sk > 90 ) 
-                          AND ( ws_ship_date_sk - ws_sold_date_sk <= 120 ) THEN 
-                     1 
-                     ELSE 0 
-                   END) AS days_91_120, 
-               Sum(CASE 
-                     WHEN ( ws_ship_date_sk - ws_sold_date_sk > 120 ) THEN 1 
-                     ELSE 0 
-                   END) AS days_over_120 
-FROM   web_sales, 
-       warehouse, 
-       ship_mode, 
-       web_site, 
-       date_dim 
-WHERE  d_month_seq BETWEEN 1222 AND 1222 + 11 
-       AND ws_ship_date_sk = d_date_sk 
-       AND ws_warehouse_sk = w_warehouse_sk 
-       AND ws_ship_mode_sk = sm_ship_mode_sk 
-       AND ws_web_site_sk = web_site_sk 
-GROUP  BY 1, 
-          sm_type, 
-          web_name 
-ORDER  BY 1, 
-          sm_type, 
-          web_name
-LIMIT 100; 
+-- query 62
+-- TPCDS Version 2.13.0
+select  
+   substr(w_warehouse_name,1,20)
+  ,sm_type
+  ,web_name
+  ,sum(case when (ws_ship_date_sk - ws_sold_date_sk <= 30 ) then 1 else 0 end)  as "30 days" 
+  ,sum(case when (ws_ship_date_sk - ws_sold_date_sk > 30) and 
+                 (ws_ship_date_sk - ws_sold_date_sk <= 60) then 1 else 0 end )  as "31-60 days" 
+  ,sum(case when (ws_ship_date_sk - ws_sold_date_sk > 60) and 
+                 (ws_ship_date_sk - ws_sold_date_sk <= 90) then 1 else 0 end)  as "61-90 days" 
+  ,sum(case when (ws_ship_date_sk - ws_sold_date_sk > 90) and
+                 (ws_ship_date_sk - ws_sold_date_sk <= 120) then 1 else 0 end)  as "91-120 days" 
+  ,sum(case when (ws_ship_date_sk - ws_sold_date_sk  > 120) then 1 else 0 end)  as ">120 days" 
+from
+   web_sales
+  ,warehouse
+  ,ship_mode
+  ,web_site
+  ,date_dim
+where
+    d_month_seq between 1188 and 1188 + 11
+and ws_ship_date_sk   = d_date_sk
+and ws_warehouse_sk   = w_warehouse_sk
+and ws_ship_mode_sk   = sm_ship_mode_sk
+and ws_web_site_sk    = web_site_sk
+group by
+   substr(w_warehouse_name,1,20)
+  ,sm_type
+  ,web_name
+order by substr(w_warehouse_name,1,20)
+        ,sm_type
+       ,web_name
+limit 100;
+
