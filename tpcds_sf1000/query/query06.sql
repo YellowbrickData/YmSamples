@@ -1,23 +1,26 @@
--- query6
-SELECT a.ca_state state, 
-               Count(*)   cnt 
-FROM   customer_address a, 
-       customer c, 
-       store_sales s, 
-       date_dim d, 
-       item i 
-WHERE  a.ca_address_sk = c.c_current_addr_sk 
-       AND c.c_customer_sk = s.ss_customer_sk 
-       AND s.ss_sold_date_sk = d.d_date_sk 
-       AND s.ss_item_sk = i.i_item_sk 
-       AND d.d_month_seq = (SELECT DISTINCT ( d_month_seq ) 
-                            FROM   date_dim 
-                            WHERE  d_year = 1998 
-                                   AND d_moy = 7) 
-       AND i.i_current_price > 1.2 * (SELECT Avg(j.i_current_price) 
-                                      FROM   item j 
-                                      WHERE  j.i_category = i.i_category) 
-GROUP  BY a.ca_state 
-HAVING Count(*) >= 10 
-ORDER  BY cnt
-LIMIT 100; 
+-- query 06
+-- TPCDS Version 2.13.0
+select  a.ca_state state, count(*) cnt
+ from customer_address a
+     ,customer c
+     ,store_sales s
+     ,date_dim d
+     ,item i
+ where       a.ca_address_sk = c.c_current_addr_sk
+ 	and c.c_customer_sk = s.ss_customer_sk
+ 	and s.ss_sold_date_sk = d.d_date_sk
+ 	and s.ss_item_sk = i.i_item_sk
+ 	and d.d_month_seq = 
+ 	     (select distinct (d_month_seq)
+ 	      from date_dim
+               where d_year = 2002
+ 	        and d_moy = 3 )
+ 	and i.i_current_price > 1.2 * 
+             (select avg(j.i_current_price) 
+ 	     from item j 
+ 	     where j.i_category = i.i_category)
+ group by a.ca_state
+ having count(*) >= 10
+ order by cnt, a.ca_state 
+ limit 100;
+

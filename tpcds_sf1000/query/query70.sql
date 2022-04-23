@@ -1,34 +1,38 @@
--- query70
-SELECT Sum(ss_net_profit)                     AS total_sum, 
-               s_state, 
-               s_county, 
-               Rank() 
-                 OVER ( 
-                   PARTITION BY s_state, s_county
-                   ORDER BY Sum(ss_net_profit) DESC)  AS rank_within_parent 
-FROM   store_sales, 
-       date_dim d1, 
-       store 
-WHERE  d1.d_month_seq BETWEEN 1200 AND 1200 + 11 
-       AND d1.d_date_sk = ss_sold_date_sk 
-       AND s_store_sk = ss_store_sk 
-       AND s_state IN (SELECT s_state 
-                       FROM   (SELECT s_state                               AS 
-                                      s_state, 
-                                      Rank() 
-                                        OVER ( 
-                                          partition BY s_state 
-                                          ORDER BY Sum(ss_net_profit) DESC) AS 
-                                      ranking 
-                               FROM   store_sales, 
-                                      store, 
-                                      date_dim 
-                               WHERE  d_month_seq BETWEEN 1200 AND 1200 + 11 
-                                      AND d_date_sk = ss_sold_date_sk 
-                                      AND s_store_sk = ss_store_sk 
-                               GROUP  BY s_state) tmp1 
-                       WHERE  ranking <= 5) 
-GROUP  BY s_state, s_county 
-ORDER  BY s_state, 
-          rank_within_parent
-LIMIT 100; 
+-- query 70
+-- TPCDS Version 2.13.0
+select  
+    sum(ss_net_profit) as total_sum
+   ,s_state
+   ,s_county
+   ,grouping(s_state)+grouping(s_county) as lochierarchy
+   ,rank() over (
+ 	partition by grouping(s_state)+grouping(s_county),
+ 	case when grouping(s_county) = 0 then s_state end 
+ 	order by sum(ss_net_profit) desc) as rank_within_parent
+ from
+    store_sales
+   ,date_dim       d1
+   ,store
+ where
+    d1.d_month_seq between 1204 and 1204+11
+ and d1.d_date_sk = ss_sold_date_sk
+ and s_store_sk  = ss_store_sk
+ and s_state in
+             ( select s_state
+               from  (select s_state as s_state,
+ 			    rank() over ( partition by s_state order by sum(ss_net_profit) desc) as ranking
+                      from   store_sales, store, date_dim
+                      where  d_month_seq between 1204 and 1204+11
+ 			    and d_date_sk = ss_sold_date_sk
+ 			    and s_store_sk  = ss_store_sk
+                      group by s_state
+                     ) tmp1 
+               where ranking <= 5
+             )
+ group by rollup(s_state,s_county)
+ order by
+   lochierarchy desc
+  ,case when lochierarchy = 0 then s_state end
+  ,rank_within_parent
+ limit 100;
+

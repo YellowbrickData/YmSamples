@@ -1,37 +1,23 @@
--- query38
-WITH g1 AS (
-        SELECT DISTINCT c_last_name, 
-                        c_first_name, 
-                        d_date 
-        FROM   store_sales, 
-               date_dim, 
-               customer 
-        WHERE  store_sales.ss_sold_date_sk = date_dim.d_date_sk 
-               AND store_sales.ss_customer_sk = customer.c_customer_sk 
-               AND d_month_seq BETWEEN 1188 AND 1188 + 11 
-), g2 AS (
-        SELECT DISTINCT c_last_name, 
-                        c_first_name, 
-                        d_date 
-        FROM   catalog_sales, 
-               date_dim, 
-               customer 
-        WHERE  catalog_sales.cs_sold_date_sk = date_dim.d_date_sk 
-               AND catalog_sales.cs_bill_customer_sk = customer.c_customer_sk 
-               AND d_month_seq BETWEEN 1188 AND 1188 + 11 
-), g3 AS (
-        SELECT DISTINCT c_last_name, 
-                        c_first_name, 
-                        d_date 
-        FROM   web_sales, 
-               date_dim, 
-               customer 
-        WHERE  web_sales.ws_sold_date_sk = date_dim.d_date_sk 
-               AND web_sales.ws_bill_customer_sk = customer.c_customer_sk 
-               AND d_month_seq BETWEEN 1188 AND 1188 + 11
-)
-SELECT Count(*) 
-FROM   g1 
-JOIN g2 ON g1.c_last_name = g2.c_last_name AND g1.c_first_name = g2.c_first_name AND g1.d_date = g2.d_date
-JOIN g3 ON g1.c_last_name = g3.c_last_name AND g1.c_first_name = g3.c_first_name AND g1.d_date = g3.d_date
-LIMIT 100; 
+-- query 38
+-- TPCDS Version 2.13.0
+select  count(*) from (
+    select distinct c_last_name, c_first_name, d_date
+    from store_sales, date_dim, customer
+          where store_sales.ss_sold_date_sk = date_dim.d_date_sk
+      and store_sales.ss_customer_sk = customer.c_customer_sk
+      and d_month_seq between 1192 and 1192 + 11
+  intersect
+    select distinct c_last_name, c_first_name, d_date
+    from catalog_sales, date_dim, customer
+          where catalog_sales.cs_sold_date_sk = date_dim.d_date_sk
+      and catalog_sales.cs_bill_customer_sk = customer.c_customer_sk
+      and d_month_seq between 1192 and 1192 + 11
+  intersect
+    select distinct c_last_name, c_first_name, d_date
+    from web_sales, date_dim, customer
+          where web_sales.ws_sold_date_sk = date_dim.d_date_sk
+      and web_sales.ws_bill_customer_sk = customer.c_customer_sk
+      and d_month_seq between 1192 and 1192 + 11
+) hot_cust
+limit 100;
+

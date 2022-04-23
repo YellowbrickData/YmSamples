@@ -1,31 +1,34 @@
--- query12
-SELECT
-         i_item_id , 
-         i_item_desc , 
-         i_category , 
-         i_class , 
-         i_current_price , 
-         Sum(ws_ext_sales_price)                                                              AS itemrevenue ,
-         Sum(ws_ext_sales_price)*100/Sum(Sum(ws_ext_sales_price)) OVER (partition BY i_class) AS revenueratio
-FROM     web_sales , 
-         item , 
-         date_dim 
-WHERE    ws_item_sk = i_item_sk 
-AND      i_category IN ('Home', 
-                        'Men', 
-                        'Women') 
-AND      ws_sold_date_sk = d_date_sk 
-AND      Cast(d_date AS DATE) BETWEEN Cast('2000-05-11' AS DATE) AND      ( 
-                  Cast('2000-06-11' AS DATE)) 
-GROUP BY i_item_id , 
-         i_item_desc , 
-         i_category , 
-         i_class , 
-         i_current_price 
-ORDER BY i_category , 
-         i_class , 
-         i_item_id , 
-         i_item_desc , 
-         revenueratio 
-LIMIT 100; 
+-- query 12
+-- TPCDS Version 2.13.0
+select  i_item_id
+      ,i_item_desc 
+      ,i_category 
+      ,i_class 
+      ,i_current_price
+      ,sum(ws_ext_sales_price) as itemrevenue 
+      ,sum(ws_ext_sales_price)*100/sum(sum(ws_ext_sales_price)) over
+          (partition by i_class) as revenueratio
+from	
+	web_sales
+    	,item 
+    	,date_dim
+where 
+	ws_item_sk = i_item_sk 
+  	and i_category in ('Music', 'Women', 'Jewelry')
+  	and ws_sold_date_sk = d_date_sk
+	and d_date between cast('1999-02-03' as date) 
+				and (cast('1999-02-03' as date) + interval '30' day)
+group by 
+	i_item_id
+        ,i_item_desc 
+        ,i_category
+        ,i_class
+        ,i_current_price
+order by 
+	i_category
+        ,i_class
+        ,i_item_id
+        ,i_item_desc
+        ,revenueratio
+limit 100;
 

@@ -1,63 +1,52 @@
--- query9
-SELECT CASE 
-         WHEN (SELECT Count(*) 
-               FROM   store_sales 
-               WHERE  ss_quantity BETWEEN 1 AND 20) > 3672 THEN 
-         (SELECT Avg(ss_ext_list_price) 
-          FROM   store_sales 
-          WHERE 
-         ss_quantity BETWEEN 1 AND 20) 
-         ELSE (SELECT Avg(ss_net_profit) 
-               FROM   store_sales 
-               WHERE  ss_quantity BETWEEN 1 AND 20) 
-       END bucket1, 
-       CASE 
-         WHEN (SELECT Count(*) 
-               FROM   store_sales 
-               WHERE  ss_quantity BETWEEN 21 AND 40) > 3392 THEN 
-         (SELECT Avg(ss_ext_list_price) 
-          FROM   store_sales 
-          WHERE 
-         ss_quantity BETWEEN 21 AND 40) 
-         ELSE (SELECT Avg(ss_net_profit) 
-               FROM   store_sales 
-               WHERE  ss_quantity BETWEEN 21 AND 40) 
-       END bucket2, 
-       CASE 
-         WHEN (SELECT Count(*) 
-               FROM   store_sales 
-               WHERE  ss_quantity BETWEEN 41 AND 60) > 32784 THEN 
-         (SELECT Avg(ss_ext_list_price) 
-          FROM   store_sales 
-          WHERE 
-         ss_quantity BETWEEN 41 AND 60) 
-         ELSE (SELECT Avg(ss_net_profit) 
-               FROM   store_sales 
-               WHERE  ss_quantity BETWEEN 41 AND 60) 
-       END bucket3, 
-       CASE 
-         WHEN (SELECT Count(*) 
-               FROM   store_sales 
-               WHERE  ss_quantity BETWEEN 61 AND 80) > 26032 THEN 
-         (SELECT Avg(ss_ext_list_price) 
-          FROM   store_sales 
-          WHERE 
-         ss_quantity BETWEEN 61 AND 80) 
-         ELSE (SELECT Avg(ss_net_profit) 
-               FROM   store_sales 
-               WHERE  ss_quantity BETWEEN 61 AND 80) 
-       END bucket4, 
-       CASE 
-         WHEN (SELECT Count(*) 
-               FROM   store_sales 
-               WHERE  ss_quantity BETWEEN 81 AND 100) > 23982 THEN 
-         (SELECT Avg(ss_ext_list_price) 
-          FROM   store_sales 
-          WHERE 
-         ss_quantity BETWEEN 81 AND 100) 
-         ELSE (SELECT Avg(ss_net_profit) 
-               FROM   store_sales 
-               WHERE  ss_quantity BETWEEN 81 AND 100) 
-       END bucket5 
-FROM   reason 
-WHERE  r_reason_sk = 1; 
+-- query 09
+-- TPCDS Version 2.13.0
+select case when (select count(*) 
+                  from store_sales 
+                  where ss_quantity between 1 and 20) > 2972190
+            then (select avg(ss_ext_discount_amt) 
+                  from store_sales 
+                  where ss_quantity between 1 and 20) 
+            else (select avg(ss_net_paid)
+                  from store_sales
+                  where ss_quantity between 1 and 20) end bucket1 ,
+       case when (select count(*)
+                  from store_sales
+                  where ss_quantity between 21 and 40) > 4505785
+            then (select avg(ss_ext_discount_amt)
+                  from store_sales
+                  where ss_quantity between 21 and 40) 
+            else (select avg(ss_net_paid)
+                  from store_sales
+                  where ss_quantity between 21 and 40) end bucket2,
+       case when (select count(*)
+                  from store_sales
+                  where ss_quantity between 41 and 60) > 7797278
+            then (select avg(ss_ext_discount_amt)
+                  from store_sales
+                  where ss_quantity between 41 and 60)
+            else (select avg(ss_net_paid)
+                  from store_sales
+                  where ss_quantity between 41 and 60) end bucket3,
+       case when (select count(*)
+                  from store_sales
+                  where ss_quantity between 61 and 80) > 16112224
+            then (select avg(ss_ext_discount_amt)
+                  from store_sales
+                  where ss_quantity between 61 and 80)
+            else (select avg(ss_net_paid)
+                  from store_sales
+                  where ss_quantity between 61 and 80) end bucket4,
+       case when (select count(*)
+                  from store_sales
+                  where ss_quantity between 81 and 100) > 25211875
+            then (select avg(ss_ext_discount_amt)
+                  from store_sales
+                  where ss_quantity between 81 and 100)
+            else (select avg(ss_net_paid)
+                  from store_sales
+                  where ss_quantity between 81 and 100) end bucket5
+from reason
+where r_reason_sk = 1
+limit 100
+;
+

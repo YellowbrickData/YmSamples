@@ -1,43 +1,35 @@
+-- query 99
+-- TPCDS Version 2.13.0
+select  
+   substr(w_warehouse_name,1,20)
+  ,sm_type
+  ,cc_name
+  ,sum(case when (cs_ship_date_sk - cs_sold_date_sk <= 30 ) then 1 else 0 end)  as "30 days" 
+  ,sum(case when (cs_ship_date_sk - cs_sold_date_sk > 30) and 
+                 (cs_ship_date_sk - cs_sold_date_sk <= 60) then 1 else 0 end )  as "31-60 days" 
+  ,sum(case when (cs_ship_date_sk - cs_sold_date_sk > 60) and 
+                 (cs_ship_date_sk - cs_sold_date_sk <= 90) then 1 else 0 end)  as "61-90 days" 
+  ,sum(case when (cs_ship_date_sk - cs_sold_date_sk > 90) and
+                 (cs_ship_date_sk - cs_sold_date_sk <= 120) then 1 else 0 end)  as "91-120 days" 
+  ,sum(case when (cs_ship_date_sk - cs_sold_date_sk  > 120) then 1 else 0 end)  as ">120 days" 
+from
+   catalog_sales
+  ,warehouse
+  ,ship_mode
+  ,call_center
+  ,date_dim
+where
+    d_month_seq between 1194 and 1194 + 11
+and cs_ship_date_sk   = d_date_sk
+and cs_warehouse_sk   = w_warehouse_sk
+and cs_ship_mode_sk   = sm_ship_mode_sk
+and cs_call_center_sk = cc_call_center_sk
+group by
+   substr(w_warehouse_name,1,20)
+  ,sm_type
+  ,cc_name
+order by substr(w_warehouse_name,1,20)
+        ,sm_type
+        ,cc_name
+limit 100;
 
-
--- query99
-SELECT Substr(w_warehouse_name, 1, 20), 
-               sm_type, 
-               cc_name, 
-               Sum(CASE 
-                     WHEN ( cs_ship_date_sk - cs_sold_date_sk <= 30 ) THEN 1 
-                     ELSE 0 
-                   END) AS days_30, 
-               Sum(CASE 
-                     WHEN ( cs_ship_date_sk - cs_sold_date_sk > 30 ) 
-                          AND ( cs_ship_date_sk - cs_sold_date_sk <= 60 ) THEN 1 
-                     ELSE 0 
-                   END) AS days_31_60, 
-               Sum(CASE 
-                     WHEN ( cs_ship_date_sk - cs_sold_date_sk > 60 ) 
-                          AND ( cs_ship_date_sk - cs_sold_date_sk <= 90 ) THEN 1 
-                     ELSE 0 
-                   END) AS days_61_90, 
-               Sum(CASE 
-                     WHEN ( cs_ship_date_sk - cs_sold_date_sk > 90 ) 
-                          AND ( cs_ship_date_sk - cs_sold_date_sk <= 120 ) THEN 
-                     1 
-                     ELSE 0 
-                   END) AS days_91_120, 
-               Sum(CASE 
-                     WHEN ( cs_ship_date_sk - cs_sold_date_sk > 120 ) THEN 1 
-                     ELSE 0 
-                   END) AS days_over_120 
-FROM   catalog_sales, 
-       warehouse, 
-       ship_mode, 
-       call_center, 
-       date_dim 
-WHERE  d_month_seq BETWEEN 1200 AND 1200 + 11 
-       AND cs_ship_date_sk = d_date_sk 
-       AND cs_warehouse_sk = w_warehouse_sk 
-       AND cs_ship_mode_sk = sm_ship_mode_sk 
-       AND cs_call_center_sk = cc_call_center_sk 
-GROUP  BY 1, 2, 3
-ORDER  BY 1, 2, 3
-LIMIT 100; 
