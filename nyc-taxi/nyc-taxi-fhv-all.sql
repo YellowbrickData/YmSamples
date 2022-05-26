@@ -5,8 +5,8 @@ LOAD TABLE nyc_taxi.nyc_taxi_trips_fhv
     pu_location_id VARCHAR(max)
   )
   FROM (
-    '/trip data/fhv_tripdata_2015',
-    '/trip data/fhv_tripdata_2016'
+    '/csv_backup/fhv_tripdata_2015',
+    '/csv_backup/fhv_tripdata_2016'
   )
   EXTERNAL LOCATION nyc_taxi_location
   WITH (
@@ -24,7 +24,7 @@ LOAD TABLE nyc_taxi.nyc_taxi_trips_fhv
     dispatching_base_num VARCHAR(max)
   )
   FROM (
-    '/trip data/fhv_tripdata_2018'
+    '/csv_backup/fhv_tripdata_2018'
   )
   EXTERNAL LOCATION nyc_taxi_location
   WITH (
@@ -34,9 +34,9 @@ LOAD TABLE nyc_taxi.nyc_taxi_trips_fhv
 
 LOAD TABLE nyc_taxi.nyc_taxi_trips_fhv
   FROM (
-    '/trip data/fhv_tripdata_2017',
-    '/trip data/fhv_tripdata_2019',
-    '/trip data/fhv_tripdata_202'
+    '/csv_backup/fhv_tripdata_2017',
+    '/csv_backup/fhv_tripdata_2019',
+    '/csv_backup/fhv_tripdata_202'
   )
   EXTERNAL LOCATION nyc_taxi_location
   WITH (
