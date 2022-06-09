@@ -1,5 +1,4 @@
 LOAD TABLE nyc_taxi.nyc_taxi_trips_yellow
-    FROM ('csv_backup/yellow_tripdata_2020-01.csv')
+    FROM ('trip data/yellow_tripdata_2020-01.parquet')
     EXTERNAL LOCATION nyc_taxi_location
-    EXTERNAL FORMAT nyc_taxi_trips_green_yellow_format
     WITH (max_bad_rows '-1')
