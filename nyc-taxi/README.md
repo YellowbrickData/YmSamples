@@ -1,3 +1,9 @@
+# :warning: **This example is now deprecated**
+
+The NYC Taxi trip data data was converted to Parquet in Spring 2022, but was soon afterwards shuttered for external S3 bucket access.  As a result, this example data set is provided for educational purposes only.  
+
+The parquet source files are now available via the same NYC TLC site listed below, but are provided via HTTPS access only.  You may be able to gather these files into your own S3 bucket and tailor this example to load from that source.
+
 # NYC Taxi Trip Data
 
 This dataset contains 4 different tables for different classes of taxi/ride trips
