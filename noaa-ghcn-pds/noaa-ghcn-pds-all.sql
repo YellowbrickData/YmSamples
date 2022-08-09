@@ -46,7 +46,7 @@ LOAD TABLE noaa_ghcn_pds.observations
   FROM ('/csv.gz/')
   EXTERNAL LOCATION noaa_ghcn_pds_location
   WITH (
-    num_readers '30',
+    num_readers '8',
     read_sources_concurrently 'ALWAYS',
     max_bad_rows '-1',
     source_compression 'gz' );
