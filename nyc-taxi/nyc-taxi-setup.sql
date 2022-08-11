@@ -45,14 +45,14 @@ CREATE TABLE nyc_taxi.nyc_taxi_trips_green
   "VendorID"  VARCHAR(max),
   "lpep_pickup_datetime" TIMESTAMP,
   "lpep_dropoff_datetime"  TIMESTAMP,
-  "store_and_fwd_flag" VARCHAR(max),
+  "store_and_fwd_flag" VARCHAR(max) NULL,
   "RatecodeID" DOUBLE PRECISION,
   "PULocationID" DOUBLE PRECISION,
-  "DOLocationID" DOUBLE PRECISION,
+  "DOLocationID" VARCHAR(max) NULL,
   "passenger_count" DOUBLE PRECISION,
   "trip_distance" DOUBLE PRECISION,
   "fare_amount" DOUBLE PRECISION,
-  "extra" DOUBLE PRECISION,
+  "extra" VARCHAR(max) NULL,
   "mta_tax" DOUBLE PRECISION,
   "tip_amount" DOUBLE PRECISION,
   "tolls_amount" DOUBLE PRECISION,
@@ -73,12 +73,12 @@ CREATE TABLE nyc_taxi.nyc_taxi_trips_yellow
   "passenger_count" DOUBLE PRECISION,
   "trip_distance" DOUBLE PRECISION,
   "RatecodeID" DOUBLE PRECISION,
-  "store_and_forward_flag" VARCHAR(max),
+  "store_and_forward_flag" VARCHAR(max) NULL,
   "PULocationID" DOUBLE PRECISION,
-  "DOLocationID" DOUBLE PRECISION,
-  "payment_type" VARCHAR(max),
+  "DOLocationID" VARCHAR(max) NULL,
+  "payment_type" VARCHAR(max) NULL,
   "fare_amount" DOUBLE PRECISION,
-  "extra" DOUBLE PRECISION,
+  "extra" VARCHAR(max) NULL,
   "mta_tax" DOUBLE PRECISION,
   "tip_amount" DOUBLE PRECISION,
   "tolls_amount" DOUBLE PRECISION,
@@ -153,7 +153,7 @@ GRANT ALL ON EXTERNAL FORMAT nyc_taxi_format TO public;
 
 DROP EXTERNAL LOCATION IF EXISTS nyc_taxi_location;
 CREATE EXTERNAL LOCATION nyc_taxi_location
-  PATH 'nyc-tlc'
+  PATH 'ue1-sampledata.yellowbrick.com'
   EXTERNAL STORAGE nyc_taxi_storage
   EXTERNAL FORMAT nyc_taxi_format;
 GRANT ALL ON EXTERNAL LOCATION nyc_taxi_location TO public;

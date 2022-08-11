@@ -1,7 +1,7 @@
 LOAD TABLE nyc_taxi.nyc_taxi_trips_fhvhv
-  FROM ('/csv_backup/fhvhv_tripdata_2019')
+  FROM ('nyc-taxi/fhvhv_tripdata_2019')
   EXTERNAL LOCATION nyc_taxi_location
   WITH (
-    num_readers '30',
+    num_readers '10',
     read_sources_concurrently 'ALWAYS',
     max_bad_rows '-1' );
