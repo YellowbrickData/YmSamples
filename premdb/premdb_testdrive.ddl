@@ -8,6 +8,7 @@ drop table if exists season, team, hometeam, awayteam, match;
 
 drop external storage if exists premdbs3 cascade;
 drop external format if exists premdbs3format;
+drop external location if exists premdbs3data;
 
 create table season(seasonid smallint, season_name character(9), numteams smallint, winners varchar(30)) distribute replicate;
 
