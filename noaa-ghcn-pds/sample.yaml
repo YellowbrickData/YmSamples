@@ -13,7 +13,7 @@ author: Yellowbrick Staff
 files:
 - dir: noaa-ghcn-pds/queries
   include: sql
-size: 17900000000
+size: 58000000000
 database: yellowbrick_trial
 schema: noaa_ghcn_pds
 
