@@ -43,7 +43,7 @@ TRUNCATE TABLE noaa_ghcn_pds.staging;
 
 -- load observations
 LOAD TABLE noaa_ghcn_pds.observations
-  FROM ('/csv.gz/')
+  FROM ('/csv.gz/by_year/')
   EXTERNAL LOCATION noaa_ghcn_pds_location
   WITH (
     num_readers '8',
