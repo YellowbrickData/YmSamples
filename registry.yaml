@@ -49,27 +49,27 @@ schema: nyc_taxi
 
 
 ---
-name: TPC-DS Scale Factor 1000
-id: tpcds_sf1000
-icon: tpcds_sf1000/icon.svg
+name: TPC-DS Scale Factor 100
+id: tpcds_sf100
+icon: tpcds_sf100/icon.svg
 description: |-
   **Source**: http://www.tpc.org/tpcds/
 
   TPC-DS is a performance benchmark that can generate a database at different scale factors. The TPC-DS data set supports SQL queries and and other decision-support operations as a means of providing objective performance data for existing and emerging technologies in data warehousing and other domains where fast response times are critical.
 actions:
 - name: Setup
-  script: tpcds_sf1000/setup.sql
+  script: tpcds_sf100/setup.sql
 - name: Load
-  script: tpcds_sf1000/load_all_tables.sql
+  script: tpcds_sf100/load_all_tables.sql
 - name: 'Benchmark: 1-99'
-  script: tpcds_sf1000/benchmark.sql
+  script: tpcds_sf100/benchmark.sql
 author: Yellowbrick Staff
 files:
-- dir: tpcds_sf1000/query
+- dir: tpcds_sf100/query
   include: sql
-size: 380700000000
+size: 32200000000
 database: yellowbrick_trial
-schema: tpcds_sf1000
+schema: tpcds_sf100
 
 
 ---
@@ -170,28 +170,4 @@ files:
 size: 831662
 database: yellowbrick_trial
 schema: premdb
-
-
----
-name: Healthcare Sample Dataset
-id: healthcare
-icon: healthcare/icon.svg
-description: |-
-  **Source**: https://synthetichealth.github.io/synthea/
-  This is a set of randomly generated healthcare records, stored in FHIR v4 
-  format.  FHIR (Fast Healthcare Interoperability Resources) is an emerging 
-  standard for exchanging health care records electronically, while maintaining 
-  HIPAA compliance. 
-actions:
-- name: Setup/Load 
-  script: healthcare/setup.sql
-author: Yellowbrick Staff
-files:
-- dir: healthcare
-  include: sql|ddl
-- dir: netflow/queries
-  include: sql|ddl
-size: 256500000000 
-database: yellowbrick_trial
-schema: healthcare
 
